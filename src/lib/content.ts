@@ -33,7 +33,7 @@ export const hero = {
   wordmark: 'SWAROOP',
   headline: 'I build brands students trust, and the systems that scale them.',
   subtitle:
-    'Associate Director, Brand & Content at Scaler School of Technology  ·  1M+ organic audience  ·  18 content properties  ·  24 years old',
+    'Associate Director, Brand & Content at Scaler School of Technology  ·  1M+ organic audience  ·  18 channels & systems  ·  24 years old',
   cta: { label: 'Get in touch', href: '#contact' },
   ctaSecondary: { label: 'See what I run', href: '#roles' },
 };
@@ -43,7 +43,7 @@ export const proof = {
   stats: [
     { value: 5, suffix: '', label: 'Brand Channels Owned' },
     { value: 4, suffix: '', label: 'Content Pods Led' },
-    { value: 18, suffix: '', label: 'Properties in the Ecosystem' },
+    { value: 18, suffix: '', label: 'Channels & Systems Run' },
     { value: 1_000_000, suffix: '+', label: 'Organic Audience' },
     { value: 30, suffix: '+', label: 'Brand Collaborations' },
     { value: 24, suffix: '', label: 'Years Old' },
@@ -171,7 +171,7 @@ export const roles = {
     {
       number: '03',
       title: 'The Audience I Bring',
-      org: '1M+ followers · 18 properties · Since 2021',
+      org: '1M+ followers · Since 2021',
       role: 'What I bring to the table',
       bullets: [
         'Grew my own YouTube from 80K to 460K subscribers in two years, all organic.',
@@ -376,12 +376,12 @@ export const testimonials = {
 export const empire = {
   label: '// 06 · ECOSYSTEM',
   heading: 'The Content Ecosystem I Built',
-  subheading: '18 properties. One flywheel.',
+  subheading: '18 channels and systems. One flywheel.',
   description:
-    'Every property feeds the next. The personal channels build trust, the SST channels convert, and the infrastructure keeps it all running on its own. It’s how one person keeps 18 handles moving without a 50-person team. Hire me and you get the whole system, not just one more name on the org chart.',
+    'The content channels and AI systems I run, all wired together. Every channel feeds the next: the personal channels build trust, the SST channels convert, and the AI systems keep it all running on their own. It’s how one person keeps the whole thing moving without a 50-person team. Hire me and you get the machine, not just one more name on the org chart.',
   rings: [
     {
-      name: 'Personal',
+      name: 'Personal Channels',
       color: 'amber',
       properties: [
         { name: 'Swaroop Talks', platform: 'YouTube', handle: '@SwaroopVITB' },
@@ -394,18 +394,18 @@ export const empire = {
       ],
     },
     {
-      name: 'SST',
+      name: 'SST Channels',
       color: 'blue',
       properties: [
-        { name: 'SST YouTube', platform: 'YouTube', handle: 'SST Channel' },
-        { name: 'SST Instagram', platform: 'Instagram', handle: 'SST Handle' },
-        { name: 'SST LinkedIn', platform: 'LinkedIn', handle: 'SST Page' },
-        { name: 'SST Twitter/X', platform: 'X', handle: 'SST Handle' },
-        { name: 'SST Blog', platform: 'Website', handle: 'SST Blog' },
+        { name: 'SST YouTube', platform: 'YouTube', handle: '@ScalerSchoolOfTechnology' },
+        { name: 'SST Instagram', platform: 'Instagram', handle: '@scaler_school_of_technology' },
+        { name: 'SST LinkedIn', platform: 'LinkedIn', handle: 'Scaler School of Technology' },
+        { name: 'SST Twitter / X', platform: 'X', handle: 'Scaler SST' },
+        { name: 'SST Blog', platform: 'Website', handle: 'scaler.com' },
       ],
     },
     {
-      name: 'Infrastructure',
+      name: 'AI Systems',
       color: 'gray',
       properties: [
         { name: 'AI Carousel Engine', platform: 'System', handle: '5 posts/day' },
@@ -502,7 +502,7 @@ export const about = {
   pullQuote: 'I am someone who always wanted to make things useful for people.',
   paragraphs: [
     'I run brand and content at Scaler School of Technology, one of India’s most selective engineering colleges. Five channels, four pods, a mix of agencies, freelancers and interns, and a content engine that feeds admissions through 30 to 40 day sprints. I joined as the first content hire. Today I lead the brand.',
-    'Alongside that, I built an audience of over a million people across 18 properties, with my own YouTube going from 80K to 460K subscribers in the last two years alone. It started in January 2021 with Python tutorials in Telugu, recorded on a screen recorder with no plan and no audience. That following isn’t a vanity number. It’s a distribution channel, a trust engine, and proof that I understand content-market fit from the ground up. I also founded MentiBY, a cohort platform that gives engineering students the guidance I never had.',
+    'Alongside that, I built an audience of over a million people across a dozen-plus channels, with my own YouTube going from 80K to 460K subscribers in the last two years alone. It started in January 2021 with Python tutorials in Telugu, recorded on a screen recorder with no plan and no audience. That following isn’t a vanity number. It’s a distribution channel, a trust engine, and proof that I understand content-market fit from the ground up. I also founded MentiBY, a cohort platform that gives engineering students the guidance I never had.',
     'I’m 24, from Bhimavaram in Andhra Pradesh. ECE branch, not CS. EAMCET rank 6,464. I didn’t get placed on campus. The same person who couldn’t crack the IIT entrance now gets invited to speak at IIT Tirupati. People used to say I got lucky. It was never luck. It was work that slowly turned into luck. And I’m still building.',
   ],
   image: '[IMAGE: Candid portrait of Swaroop, approachable, warm lighting]',
