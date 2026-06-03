@@ -1,8 +1,14 @@
 # Swaroop — Personal Portfolio
 
-A cinematic, futuristic one-page portfolio for **B. Jyothi Swaroop** — Creator (1M+),
-Brand Operator, Founder & Speaker. Built with Next.js 14 (App Router, static export),
-TypeScript, Tailwind CSS, Framer Motion, and Lenis smooth scroll.
+A cinematic, futuristic one-page portfolio for **B. Jyothi Swaroop**, Associate Director,
+Brand & Content. Built with Next.js 14 (App Router, static export), TypeScript, Tailwind CSS,
+Framer Motion, and Lenis smooth scroll.
+
+**Live: https://bjswaroop.github.io**
+
+Deployed on **GitHub Pages** via GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
+Every push to `main` rebuilds the static export and redeploys automatically, no manual steps.
+A `public/.nojekyll` file is included so the `_next/` asset folder is served correctly.
 
 ---
 
