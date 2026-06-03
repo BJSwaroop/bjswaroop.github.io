@@ -1,8 +1,10 @@
 import NoiseOverlay from '@/components/NoiseOverlay';
 import ScrollProgress from '@/components/ScrollProgress';
 import Nav from '@/components/Nav';
+import Loader from '@/components/Loader';
 import Hero from '@/components/Hero';
 import ProofBar from '@/components/ProofBar';
+import WhatIDo from '@/components/WhatIDo';
 import Hiring from '@/components/Hiring';
 import Qualities from '@/components/Qualities';
 import Roles from '@/components/Roles';
@@ -20,6 +22,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
+      <Loader />
       <NoiseOverlay />
       <ScrollProgress />
       <Nav />
@@ -31,6 +34,7 @@ export default function Home() {
         {/* Everything below scrolls OVER the fading hero (z-20, opaque background). */}
         <div className="relative z-20 bg-[#050505]">
           <ProofBar />
+          <WhatIDo />
           <Hiring />
           <Qualities />
           <Roles />

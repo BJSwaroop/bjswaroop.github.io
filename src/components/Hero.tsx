@@ -17,7 +17,7 @@ import Magnetic from './Magnetic';
 import { scrollToId } from './SmoothScroll';
 import { hero } from '@/lib/content';
 
-const Avatar3D = dynamic(() => import('./Avatar3D'), { ssr: false });
+const AbstractHero3D = dynamic(() => import('./AbstractHero3D'), { ssr: false });
 
 function Ctas() {
   return (
@@ -58,7 +58,7 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   const [desktop3D, setDesktop3D] = useState(false);
-  const [avatarReady, setAvatarReady] = useState(false);
+  const [ready3D, setReady3D] = useState(false);
   const [active, setActive] = useState(true);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function Hero() {
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     setDesktop3D(ok);
     if (!ok) return;
-    const t = window.setTimeout(() => setAvatarReady(true), 1500);
+    const t = window.setTimeout(() => setReady3D(true), 600);
     return () => window.clearTimeout(t);
   }, []);
 
@@ -148,7 +148,7 @@ export default function Hero() {
               className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
               style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.22), transparent 70%)' }}
             />
-            {avatarReady && active && <Avatar3D />}
+            {ready3D && active && <AbstractHero3D />}
           </div>
         </div>
       ) : (

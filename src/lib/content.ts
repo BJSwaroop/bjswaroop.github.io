@@ -38,6 +38,63 @@ export const hero = {
   ctaSecondary: { label: 'See what I run', href: '#roles' },
 };
 
+// ═══════════════════════════════════════════
+// "What I do" - expanding capability rows (reference-style)
+// Every line here is grounded in the roles / systems data below.
+// ═══════════════════════════════════════════
+export const whatIDo = {
+  label: '// WHAT I DO',
+  heading: 'What I do.',
+  intro: 'Five things companies hire me for. Hover any one to open it.',
+  items: [
+    {
+      title: 'Brand & content leadership',
+      tag: 'Strategy to ship',
+      body: 'I own the narrative, the voice and the content engine for one of India’s most selective engineering schools. Five channels, four pods, agencies and interns, all pointed at one story.',
+      points: [
+        'Set the brand voice and the content calendar',
+        'Run 30 to 40 day sprints tied to admissions',
+      ],
+    },
+    {
+      title: 'Organic growth from zero',
+      tag: 'Audience building',
+      body: 'I grow channels without paid spend. SST YouTube went 4K to 78K, LinkedIn 2K to 17K, Instagram 4K to 26K. My own audience crossed a million the same way.',
+      points: [
+        'Content-market fit in Telugu and English',
+        'Distribution you own, not attention you rent',
+      ],
+    },
+    {
+      title: 'Films that build belief',
+      tag: 'Story & production',
+      body: 'Brand films, fest after-movies, a founder shoot in San Francisco, student-story series. The high-trust content people watch before a big decision.',
+      points: [
+        'Direct end to end, script to final cut',
+        'The films parents watch before saying yes',
+      ],
+    },
+    {
+      title: 'AI content systems',
+      tag: 'Leverage',
+      body: 'I build the machine, not just the post. Custom engines that research, write, generate and publish, so a lean team ships at agency scale.',
+      points: [
+        'Carousels, reels and replies on autopilot',
+        '20+ custom skills that carry my voice',
+      ],
+    },
+    {
+      title: 'Teams & pipelines',
+      tag: 'People & process',
+      body: 'I hire, train and run creators. I built a student UGC engine that acquires at roughly 75% lower CAC than influencer campaigns, and keeps running without me.',
+      points: [
+        'Recruited and trained a creator community',
+        'Systems that outlast any single hire',
+      ],
+    },
+  ],
+};
+
 export const proof = {
   label: '// 01 · SCOPE',
   stats: [
