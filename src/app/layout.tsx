@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+import CursorFollower from '@/components/CursorFollower';
 import { siteConfig } from '@/lib/content';
 
 // Self-hosted variable fonts (no layout shift, no network at build time).
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <SmoothScroll>{children}</SmoothScroll>
+        <CursorFollower />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import SectionReveal from './SectionReveal';
+import Magnetic from './Magnetic';
 import { contact, siteConfig } from '@/lib/content';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -132,13 +133,15 @@ export default function Contact() {
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-                >
-                  {status === 'submitting' ? 'Sending…' : 'Send message'}
-                </button>
+                <Magnetic className="w-full sm:w-auto">
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {status === 'submitting' ? 'Sending…' : 'Send message'}
+                  </button>
+                </Magnetic>
                 {!configured && (
                   <p className="text-xs text-[var(--text-dim)]">
                     This opens your email app with the message ready to send.

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { nav } from '@/lib/content';
 import { scrollToId, scrollToTop } from './SmoothScroll';
+import Magnetic from './Magnetic';
 
 const SECTION_IDS = nav.links.map((l) => l.href.replace('#', ''));
 
@@ -82,7 +83,8 @@ export default function Nav() {
                 <li key={link.href}>
                   <button
                     onClick={() => go(link.href)}
-                    className={`mono-accent transition-colors ${
+                    data-active={isActive}
+                    className={`nav-link mono-accent transition-colors ${
                       isActive
                         ? 'text-[var(--accent)]'
                         : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
@@ -98,15 +100,17 @@ export default function Nav() {
                 href={nav.resume.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mono-accent text-[var(--text-muted)] transition-colors hover:text-[var(--accent)]"
+                className="nav-link mono-accent text-[var(--text-muted)] transition-colors hover:text-[var(--accent)]"
               >
                 {nav.resume.label}
               </a>
             </li>
             <li>
-              <button onClick={() => go('#contact')} className="btn-primary px-4 py-2 text-sm">
-                Work with me
-              </button>
+              <Magnetic>
+                <button onClick={() => go('#contact')} className="btn-primary px-4 py-2 text-sm">
+                  Work with me
+                </button>
+              </Magnetic>
             </li>
           </ul>
 

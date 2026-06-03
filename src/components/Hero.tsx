@@ -12,6 +12,7 @@ import {
 } from 'framer-motion';
 import ParticleCanvas from './ParticleCanvas';
 import GridBackground from './GridBackground';
+import Magnetic from './Magnetic';
 import { scrollToId } from './SmoothScroll';
 import { charReveal, EASE } from '@/lib/motionVariants';
 import { hero } from '@/lib/content';
@@ -119,15 +120,16 @@ export default function Hero() {
           transition={{ delay: 0.95, duration: 0.7, ease: EASE }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <button onClick={() => scrollToId(hero.cta.href)} className="btn-primary w-full sm:w-auto">
-            {hero.cta.label}
-          </button>
-          <button
-            onClick={() => scrollToId(hero.ctaSecondary.href)}
-            className="btn-ghost w-full sm:w-auto"
-          >
-            {hero.ctaSecondary.label} ↓
-          </button>
+          <Magnetic className="w-full sm:w-auto">
+            <button onClick={() => scrollToId(hero.cta.href)} className="btn-primary w-full">
+              {hero.cta.label}
+            </button>
+          </Magnetic>
+          <Magnetic className="w-full sm:w-auto">
+            <button onClick={() => scrollToId(hero.ctaSecondary.href)} className="btn-ghost w-full">
+              {hero.ctaSecondary.label} ↓
+            </button>
+          </Magnetic>
         </motion.div>
       </div>
 

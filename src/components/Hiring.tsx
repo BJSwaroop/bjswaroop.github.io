@@ -3,6 +3,7 @@
 import { CSSProperties, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
+import Magnetic from './Magnetic';
 import { hiring } from '@/lib/content';
 
 const perspective: CSSProperties = { perspective: '1200px' };
@@ -87,9 +88,11 @@ export default function Hiring() {
 
         <div className="mt-10 flex flex-col items-start gap-5 border-t border-[var(--border)] pt-10 sm:flex-row sm:items-center sm:justify-between">
           <p className="heading-sub text-[var(--text-primary)]">{hiring.closingLine}</p>
-          <a href={hiring.cta.href} className="btn-primary shrink-0">
-            {hiring.cta.label}
-          </a>
+          <Magnetic className="shrink-0">
+            <a href={hiring.cta.href} className="btn-primary">
+              {hiring.cta.label}
+            </a>
+          </Magnetic>
         </div>
       </div>
     </section>
