@@ -146,10 +146,10 @@ export const roles = {
       role: 'Associate Director, Brand & Content',
       bullets: [
         'Own brand and content across five SST channels: YouTube, Instagram, LinkedIn, X and the blog.',
-        'Lead four pods: Brand and Content, Digital Growth, Student Media Club, and Innovation Lab storytelling.',
-        'Hire, brief, review and ship with agencies, freelancers, editors and interns.',
-        'Run 30 to 40 day content sprints that feed the admissions funnel.',
-        'Built the outreach-to-admission content plan, so every video knows where it’s sending the student.',
+        'Grew those channels organically: YouTube 4K to 78K, LinkedIn 2K to 17K, Instagram 4K to 26K.',
+        'Lead four pods and manage agencies, freelancers, editors and interns, from hiring to shipping.',
+        'Built a student UGC creator engine that acquires at roughly 75% lower CAC than influencer campaigns.',
+        'Run 30 to 40 day sprints and built the outreach-to-admission plan, so every video has a conversion destination.',
       ],
       quote:
         'Any brand can post content. But not every brand can build belief. Especially in education, belief matters a lot.',
@@ -162,7 +162,7 @@ export const roles = {
       bullets: [
         'Built a cohort-based learning platform with XP, accountability loops and WhatsApp doubt-solving.',
         'Designed the 21-day LinkedIn Challenge that gets students visible and active.',
-        'Shipped codewithswaroop.com and a mobile app, with 50,000+ downloads.',
+        'Shipped codewithswaroop.com and a mobile app: 200K+ registered users and 50,000+ downloads.',
         'Profitable from the first cohort, with no outside funding.',
       ],
       quote:
@@ -174,10 +174,10 @@ export const roles = {
       org: '1M+ followers · 18 properties · Since 2021',
       role: 'What I bring to the table',
       bullets: [
-        'Over a million organic followers, built from zero with no paid spend. The kind of distribution moat most brands spend millions trying to buy.',
-        '28.8M YouTube views and 2M+ watch hours, all organic, all in Telugu and Tenglish.',
-        'I can build an audience in a language and a market most brands write off.',
-        'It’s real proof I understand content-market fit, not a slide that says I do.',
+        'Grew my own YouTube from 80K to 460K subscribers in two years, all organic.',
+        'Over a million followers across platforms, built from zero with no paid spend. The distribution moat most brands spend millions trying to buy.',
+        '28.8M YouTube views and 2M+ watch hours, all in Telugu and Tenglish.',
+        'Real proof I understand content-market fit in a language and market most brands write off.',
       ],
       quote: 'Your language was never the limitation. It’s a distribution channel.',
     },
@@ -187,46 +187,122 @@ export const roles = {
 export const work = {
   label: '// 05 · WORK',
   heading: 'Selected Work',
-  projects: [
+  intro: 'Campaigns I led at Scaler School of Technology. Tap any card to open it.',
+  growth: [
+    { channel: 'SST YouTube', from: '4K', to: '78K' },
+    { channel: 'SST LinkedIn', from: '2K', to: '17K' },
+    { channel: 'SST Instagram', from: '4K', to: '26K' },
+  ],
+  campaigns: [
     {
-      title: 'Meta OpenEnv AI Hackathon',
-      subtitle: 'India’s first · Hosted at SST',
-      description:
-        'Ran the whole content operation: 16+ Reels, 50+ Stories, an after-film, voxpops, influencer activations with Kushal Vijay and Tharun Speaks, a 32-handle DM tracker, and an automated posting pipeline. The result: 2x the social reach of any prior SST event, and the highest single-event engagement SST has run.',
-      tags: ['Content Ops', 'Event', 'AI'],
-      image: '[IMAGE: Meta OpenEnv hackathon event photo]',
-      featured: true,
+      title: 'Meta x PyTorch OpenEnv Hackathon',
+      category: 'Hackathon Coverage',
+      summary:
+        'Owned content for India’s first OpenEnv hackathon, hosted at SST. The recap was praised by the Meta and PyTorch teams.',
+      details: [
+        'Two days of full coverage: a tech-heavy recap film, the top-15 announcement, a bootcamp explainer, 16+ reels and 50+ stories.',
+        'Ran an automated posting pipeline and a 32-handle DM tracker through the whole event.',
+      ],
+      impact:
+        'Put SST at the centre of a global AI moment. The recap crossed 10K+ views and doubled the reach of any prior SST event.',
+      link: { label: 'Watch the recap', href: 'https://www.youtube.com/watch?v=VEx10IGo4do' },
     },
     {
-      title: 'Content-Led Enrollment Engine',
-      subtitle: 'SST Admissions Funnel',
-      description:
-        'Designed the content funnel for SST admissions: top-of-funnel YouTube scripts, a 50-second JEE Fast-Track ad, fee and ROI comparison films, and outreach-to-admission sprint content. Most of SST’s organic inbound now comes from content-led campaigns, and the student decision cycle dropped from weeks to days.',
-      tags: ['Funnel', 'Performance', 'Strategy'],
-      image: '[IMAGE: SST ad or funnel content screenshot]',
-      featured: false,
+      title: 'SST Launch Film, San Francisco',
+      category: 'Brand Film',
+      summary:
+        'Produced a founder-led brand film shot in San Francisco, run end to end remotely from India.',
+      details: [
+        'Coordinated the San Francisco crew for a week from India, across a 12+ hour time difference.',
+        'Scouted venues, secured location permissions, and planned every shot around sun direction, time of day and on-site construction.',
+        'Protected the founder’s time so the shoot day ran without a single hiccup.',
+      ],
+      impact: 'A flagship brand asset, delivered flawlessly across the world, coordinated by one person.',
+      link: null,
+    },
+    {
+      title: 'UGC Creator Engine & Team',
+      category: 'Growth System',
+      summary:
+        'Built a student creator community and a UGC pipeline that brings students in at a fraction of influencer cost.',
+      details: [
+        'Recruited and trained student creators into a real, repeatable content team.',
+        'Built it as a system, not a pile of one-off automations, so it keeps running without me.',
+      ],
+      impact:
+        'UGC acquired students at roughly a quarter of the cost of influencer campaigns, about 75% lower CAC, while building the trust that moves enrollment decisions.',
+      link: null,
+    },
+    {
+      title: 'Content-Led Enrollment Funnel',
+      category: 'Performance',
+      summary: 'The films that move students from first touch to enrollment.',
+      details: [
+        'Top-of-funnel awareness videos and bottom-of-funnel decision content: fees, ROI and outcomes.',
+        'A 50-second JEE Fast-Track ad and outreach-to-admission sprint content, each with a conversion destination.',
+      ],
+      impact:
+        'Most of SST’s organic inbound now comes from content-led campaigns, and the decision cycle dropped from weeks to days.',
+      link: null,
+    },
+    {
+      title: 'Yugaantar Cultural Fest, After-Movie',
+      category: 'Event Film',
+      summary: 'Directed the official after-film for SST’s multi-day cultural fest.',
+      details: [
+        'Captured the full fest end to end, then ran selects, edit and delivery.',
+        'Owned the creative from the first frame to the final cut.',
+      ],
+      impact: 'The kind of high-emotion film that makes prospective students, and their parents, want in.',
+      link: { label: 'Watch the after-movie', href: 'https://www.youtube.com/watch?v=mdsiLaamxz4' },
+    },
+    {
+      title: 'India AI Impact Summit, Coverage',
+      category: 'Event Film',
+      summary: 'Led SST’s four-day coverage of India’s largest AI summit.',
+      details: [
+        'Four days on the ground deciding what was worth covering and what was not.',
+        'Shaped hours of footage into one tight, watchable film.',
+      ],
+      impact: 'Tied SST to the national AI conversation, not just its own campus.',
+      link: { label: 'Watch the coverage', href: 'https://www.youtube.com/watch?v=z0OfayzTc2A' },
     },
     {
       title: 'Student Story Series',
-      subtitle: 'SST’s Highest-Trust Content',
-      description:
-        'Produced narrative profiles of real students: Vivek Singh (Anthropic Fellowship), a GSoC 2026 triple selection, Hemkesh, Archisman, Pratyush (Trackroo founder), and a parent testimonial series. It became the number one parent-facing trust asset, the thing parents watch before saying yes to a ₹10L/year decision.',
-      tags: ['Brand', 'Storytelling', 'Video'],
-      image: '[IMAGE: SST student story thumbnail collage]',
-      featured: false,
+      category: 'Brand Storytelling',
+      summary: 'Narrative profiles of real students that became SST’s highest-trust content.',
+      details: [
+        'Profiles of students like Vivek Singh (Anthropic Fellowship), a GSoC 2026 triple selection, and Pratyush (Trackroo founder), plus a parent testimonial series.',
+        'Real stories, nothing staged.',
+      ],
+      impact: 'The content parents watch before saying yes to a ₹10L/year decision.',
+      link: null,
     },
     {
-      title: 'Future in Tech After XII Summit',
-      subtitle: 'Hyderabad · May 2026',
-      description:
-        'Led the content for a large-format event aimed at students who just finished class XII. Event branding, the social campaign, on-ground capture, and the cut-downs we ran afterward.',
-      tags: ['Event', 'Campaign', 'Branding'],
-      image: '[IMAGE: Future in Tech event photo]',
-      featured: false,
+      title: 'Super Mentor Sessions',
+      category: 'In-house Series',
+      summary: 'Captured industry-leader visits in-house and shipped each one within a day or two.',
+      details: [
+        'Founders and senior engineers on campus, including Bhavin Turakhia and the lead engineer behind ChatGPT Agent.',
+        'In-house capture, fast edit, fast ship. Turnaround in days, not weeks.',
+      ],
+      impact: 'A steady drumbeat of credibility content that keeps the brand warm between the big moments.',
+      link: { label: 'Watch a session', href: 'https://www.youtube.com/watch?v=boox_CgmL68' },
+    },
+    {
+      title: 'Robodog Hero Campaign',
+      category: 'Social Campaign',
+      summary: 'Took a Unitree robot dog out of campus and across Bangalore to make scroll-stopping reels.',
+      details: [
+        'Built a hero campaign around one striking idea and shot it on location.',
+        'Turned lab hardware into a brand moment people actually shared.',
+      ],
+      impact: 'High-reach social content that made the brand feel alive, not institutional.',
+      link: { label: 'See it on Instagram', href: 'https://www.instagram.com/p/DUDZZkDEegy/' },
     },
   ],
   flagship: {
-    heading: 'Most Watched',
+    heading: 'On my own channel',
     videos: [
       {
         title: 'Python Full Course Telugu',
@@ -426,7 +502,7 @@ export const about = {
   pullQuote: 'I am someone who always wanted to make things useful for people.',
   paragraphs: [
     'I run brand and content at Scaler School of Technology, one of India’s most selective engineering colleges. Five channels, four pods, a mix of agencies, freelancers and interns, and a content engine that feeds admissions through 30 to 40 day sprints. I joined as the first content hire. Today I lead the brand.',
-    'Alongside that, I built an audience of over a million people across 18 properties. It started in January 2021 with Python tutorials in Telugu, recorded on a screen recorder with no plan and no audience. That following isn’t a vanity number. It’s a distribution channel, a trust engine, and proof that I understand content-market fit from the ground up. I also founded MentiBY, a cohort platform that gives engineering students the guidance I never had.',
+    'Alongside that, I built an audience of over a million people across 18 properties, with my own YouTube going from 80K to 460K subscribers in the last two years alone. It started in January 2021 with Python tutorials in Telugu, recorded on a screen recorder with no plan and no audience. That following isn’t a vanity number. It’s a distribution channel, a trust engine, and proof that I understand content-market fit from the ground up. I also founded MentiBY, a cohort platform that gives engineering students the guidance I never had.',
     'I’m 24, from Bhimavaram in Andhra Pradesh. ECE branch, not CS. EAMCET rank 6,464. I didn’t get placed on campus. The same person who couldn’t crack the IIT entrance now gets invited to speak at IIT Tirupati. People used to say I got lucky. It was never luck. It was work that slowly turned into luck. And I’m still building.',
   ],
   image: '[IMAGE: Candid portrait of Swaroop, approachable, warm lighting]',

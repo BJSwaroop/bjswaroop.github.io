@@ -4,19 +4,10 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import ImagePlaceholder from './ImagePlaceholder';
 import SectionReveal from './SectionReveal';
-import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
+import WorkAccordion from './WorkAccordion';
 import { work } from '@/lib/content';
 
-type Project = (typeof work.projects)[number];
 type Video = (typeof work.flagship.videos)[number];
-
-function Tag({ children }: { children: string }) {
-  return (
-    <span className="rounded-[4px] border border-[var(--border-hover)] bg-black/30 px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-[var(--text-muted)]">
-      {children}
-    </span>
-  );
-}
 
 function VideoCard({ v }: { v: Video }) {
   return (
@@ -52,8 +43,6 @@ function VideoCard({ v }: { v: Video }) {
 
 export default function Work() {
   const reduce = useReducedMotion();
-  const featured: Project = work.projects.find((p) => p.featured) ?? work.projects[0];
-  const rest = work.projects.filter((p) => p !== featured);
 
   const stripRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -70,67 +59,42 @@ export default function Work() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{work.label}</p>
-        <h2 id="work-heading" className="heading-section mb-14 text-[var(--text-primary)]">
+        <h2 id="work-heading" className="heading-section text-[var(--text-primary)]">
           {work.heading}
         </h2>
+        <p className="mt-3 max-w-[640px] text-[var(--text-muted)]">{work.intro}</p>
 
-        {/* Featured project */}
-        <SectionReveal>
-          <article className="glow-card group relative overflow-hidden">
-            <ImagePlaceholder
-              label={featured.image}
-              className="h-[clamp(300px,44vh,520px)] w-full"
-              overlay
-            />
-            <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
-              <div className="mb-4 flex flex-wrap gap-2">
-                {featured.tags.map((t) => (
-                  <Tag key={t}>{t}</Tag>
-                ))}
+        {/* Channel growth I drove */}
+        <SectionReveal className="mt-10">
+          <p className="label-caption mb-4 text-[var(--text-muted)]">Channels I grew from scratch</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {work.growth.map((g) => (
+              <div key={g.channel} className="border border-[var(--border)] p-5">
+                <p className="label-caption text-[var(--text-muted)]">{g.channel}</p>
+                <p className="mt-3 flex items-baseline gap-2">
+                  <span className="font-display text-lg text-[var(--text-dim)]">{g.from}</span>
+                  <span className="text-[var(--accent)]" aria-hidden="true">
+                    →
+                  </span>
+                  <span className="font-display text-3xl font-black text-[var(--text-primary)]">
+                    {g.to}
+                  </span>
+                </p>
               </div>
-              <h3 className="heading-sub text-[var(--text-primary)]">{featured.title}</h3>
-              <p className="mono-accent mt-1 text-[var(--accent)]">{featured.subtitle}</p>
-              <p className="mt-3 max-w-[680px] text-[var(--text-muted)]">{featured.description}</p>
-            </div>
-          </article>
+            ))}
+          </div>
         </SectionReveal>
 
-        {/* Remaining projects */}
-        <motion.div
-          variants={reduce ? undefined : staggerContainer}
-          initial={reduce ? false : 'hidden'}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="mt-6 grid gap-6 md:grid-cols-2"
-        >
-          {rest.map((p, i) => (
-            <motion.article
-              key={i}
-              variants={reduce ? undefined : fadeUpVariant}
-              className="glow-card group flex flex-col overflow-hidden"
-            >
-              <ImagePlaceholder label={p.image} className="h-[200px] w-full" />
-              <div className="flex flex-1 flex-col p-7">
-                <div className="mb-3 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <Tag key={t}>{t}</Tag>
-                  ))}
-                </div>
-                <h3 className="font-display text-2xl font-bold text-[var(--text-primary)]">
-                  {p.title}
-                </h3>
-                <p className="mono-accent mt-1 text-[var(--accent)]">{p.subtitle}</p>
-                <p className="mt-3 text-[var(--text-muted)]">{p.description}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+        {/* Campaign accordion */}
+        <div className="mt-12">
+          <WorkAccordion />
+        </div>
       </div>
 
-      {/* Flagship film strip */}
+      {/* Flagship strip (personal channel) */}
       <div ref={stripRef} className="relative mt-[clamp(64px,9vh,110px)]">
         <div className="section-shell mb-8">
-          <p className="section-label mb-2">// FLAGSHIP · SCROLL TO PAN</p>
+          <p className="section-label mb-2">// MY CHANNEL · MOST WATCHED</p>
           <h3 className="heading-sub text-[var(--text-primary)]">{work.flagship.heading}</h3>
         </div>
 
