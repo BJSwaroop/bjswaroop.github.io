@@ -31,7 +31,7 @@ export const nav = {
 
 export const hero = {
   wordmark: 'SWAROOP',
-  headline: 'I build brands students trust, and the systems that scale them.',
+  headline: 'Engineer by degree. Creator by grit. Growth marketer by design.',
   subtitle:
     'Associate Director, Brand & Content at Scaler School of Technology  ·  1M+ organic audience  ·  18 channels & systems  ·  24 years old',
   cta: { label: 'Get in touch', href: '#contact' },
