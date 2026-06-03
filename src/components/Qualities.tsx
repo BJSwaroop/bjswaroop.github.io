@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
 import { qualities } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 export default function Qualities() {
   const reduce = useReducedMotion();
@@ -15,9 +16,7 @@ export default function Qualities() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{qualities.label}</p>
-        <h2 id="qualities-heading" className="heading-section text-[var(--text-primary)]">
-          {qualities.heading}
-        </h2>
+        <SplitReveal as="h2" id="qualities-heading" className="heading-section text-[var(--text-primary)]" text={qualities.heading} />
 
         <motion.div
           variants={reduce ? undefined : staggerContainer}

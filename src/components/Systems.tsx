@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import DotMatrix from './DotMatrix';
 import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
 import { systems } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 export default function Systems() {
   const reduce = useReducedMotion();
@@ -18,9 +19,7 @@ export default function Systems() {
 
       <div className="section-shell relative">
         <p className="section-label mb-3">{systems.label}</p>
-        <h2 id="systems-heading" className="heading-section text-[var(--text-primary)]">
-          {systems.heading}
-        </h2>
+        <SplitReveal as="h2" id="systems-heading" className="heading-section text-[var(--text-primary)]" text={systems.heading} />
         <p className="mt-3 max-w-[640px] text-[var(--text-muted)]">{systems.subheading}</p>
 
         <motion.div

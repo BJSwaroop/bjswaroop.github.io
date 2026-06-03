@@ -90,7 +90,12 @@ export default function Nav() {
                         : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                     }`}
                   >
-                    {link.label}
+                    <span className="link-roll">
+                      <span className="link-roll__roll">
+                        <span>{link.label}</span>
+                        <span>{link.label}</span>
+                      </span>
+                    </span>
                   </button>
                 </li>
               );
@@ -102,7 +107,12 @@ export default function Nav() {
                 rel="noopener noreferrer"
                 className="nav-link mono-accent text-[var(--text-muted)] transition-colors hover:text-[var(--accent)]"
               >
-                {nav.resume.label}
+                <span className="link-roll">
+                  <span className="link-roll__roll">
+                    <span>{nav.resume.label}</span>
+                    <span>{nav.resume.label}</span>
+                  </span>
+                </span>
               </a>
             </li>
             <li>

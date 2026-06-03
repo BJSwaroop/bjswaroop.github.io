@@ -3,6 +3,7 @@
 import Marquee from './Marquee';
 import SectionReveal from './SectionReveal';
 import { brands } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 export default function Brands() {
   return (
@@ -13,9 +14,7 @@ export default function Brands() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{brands.label}</p>
-        <h2 id="brands-heading" className="heading-section text-[var(--text-primary)]">
-          {brands.heading}
-        </h2>
+        <SplitReveal as="h2" id="brands-heading" className="heading-section text-[var(--text-primary)]" text={brands.heading} />
       </div>
 
       <div className="mt-14 [mask-image:linear-gradient(to_right,transparent,#000_7%,#000_93%,transparent)]">

@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
 import { testimonials } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 export default function Testimonials() {
   const reduce = useReducedMotion();
@@ -15,9 +16,7 @@ export default function Testimonials() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{testimonials.label}</p>
-        <h2 id="testimonials-heading" className="heading-section text-[var(--text-primary)]">
-          {testimonials.heading}
-        </h2>
+        <SplitReveal as="h2" id="testimonials-heading" className="heading-section text-[var(--text-primary)]" text={testimonials.heading} />
 
         <motion.div
           variants={reduce ? undefined : staggerContainer}

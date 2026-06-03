@@ -6,6 +6,7 @@ import ImagePlaceholder from './ImagePlaceholder';
 import SectionReveal from './SectionReveal';
 import ProjectRows from './ProjectRows';
 import { work } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 type Video = (typeof work.flagship.videos)[number];
 
@@ -59,9 +60,7 @@ export default function Work() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{work.label}</p>
-        <h2 id="work-heading" className="heading-section text-[var(--text-primary)]">
-          {work.heading}
-        </h2>
+        <SplitReveal as="h2" id="work-heading" className="heading-section text-[var(--text-primary)]" text={work.heading} />
         <p className="mt-3 max-w-[640px] text-[var(--text-muted)]">{work.intro}</p>
 
         {/* Channel growth I drove */}

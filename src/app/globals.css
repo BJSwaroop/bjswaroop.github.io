@@ -255,9 +255,38 @@
     transform-origin: left;
     transition: transform 0.3s ease;
   }
-  .nav-link:hover::after,
   .nav-link[data-active='true']::after {
     transform: scaleX(1);
+  }
+
+  /* Nav hover: the label rolls up and an amber duplicate rolls in. The roll
+     keeps a no-op transform at rest so it always owns the absolute child's
+     containing block (no positional jump when the hover transform applies). */
+  .link-roll {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.1;
+    vertical-align: top;
+  }
+  .link-roll__roll {
+    display: block;
+    transform: translateY(0);
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-roll__roll > span {
+    display: block;
+  }
+  .link-roll__roll > span:last-child {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: var(--accent);
+  }
+  .nav-link:hover .link-roll__roll,
+  .nav-link[data-active='true'] .link-roll__roll {
+    transform: translateY(-100%);
   }
 
   /* Card with amber glow on hover */

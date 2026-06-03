@@ -5,6 +5,7 @@ import SectionReveal from './SectionReveal';
 import { scrollToId } from './SmoothScroll';
 import { staggerParent, fadeUpVariant } from '@/lib/motionVariants';
 import { speaking } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 export default function Speaking() {
   const reduce = useReducedMotion();
@@ -17,9 +18,7 @@ export default function Speaking() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{speaking.label}</p>
-        <h2 id="speaking-heading" className="heading-section text-[var(--text-primary)]">
-          {speaking.heading}
-        </h2>
+        <SplitReveal as="h2" id="speaking-heading" className="heading-section text-[var(--text-primary)]" text={speaking.heading} />
 
         <motion.ul
           variants={reduce ? undefined : staggerParent}

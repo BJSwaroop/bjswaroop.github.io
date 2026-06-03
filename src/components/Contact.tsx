@@ -4,6 +4,7 @@ import { FormEvent, useState } from 'react';
 import SectionReveal from './SectionReveal';
 import Magnetic from './Magnetic';
 import { contact, siteConfig } from '@/lib/content';
+import SplitReveal from './SplitReveal';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -60,9 +61,7 @@ export default function Contact() {
     >
       <div className="section-shell">
         <p className="section-label mb-3">{contact.label}</p>
-        <h2 id="contact-heading" className="heading-section text-[var(--text-primary)]">
-          {contact.heading}
-        </h2>
+        <SplitReveal as="h2" id="contact-heading" className="heading-section text-[var(--text-primary)]" text={contact.heading} />
         <p className="mt-4 max-w-[620px] text-[var(--text-muted)]">{contact.subheading}</p>
 
         <div className="mt-12 grid gap-12 md:grid-cols-[1.4fr_1fr]">
