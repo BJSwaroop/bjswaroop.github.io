@@ -17,7 +17,7 @@ import Magnetic from './Magnetic';
 import { scrollToId } from './SmoothScroll';
 import { hero } from '@/lib/content';
 
-const AbstractHero3D = dynamic(() => import('./AbstractHero3D'), { ssr: false });
+const Avatar3D = dynamic(() => import('./Avatar3D'), { ssr: false });
 
 function Ctas() {
   return (
@@ -148,7 +148,7 @@ export default function Hero() {
               className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
               style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.22), transparent 70%)' }}
             />
-            {ready3D && active && <AbstractHero3D />}
+            {ready3D && active && <Avatar3D />}
           </div>
         </div>
       ) : (
