@@ -1,6 +1,7 @@
 'use client';
 
-import { MouseEvent } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import {
   motion,
   useMotionTemplate,
@@ -14,11 +15,36 @@ import ParticleCanvas from './ParticleCanvas';
 import GridBackground from './GridBackground';
 import Magnetic from './Magnetic';
 import { scrollToId } from './SmoothScroll';
-import { charReveal, EASE } from '@/lib/motionVariants';
 import { hero } from '@/lib/content';
+
+// 3D avatar is desktop-only and lazy-loaded, so mobile never downloads three.js.
+const Avatar3D = dynamic(() => import('./Avatar3D'), { ssr: false });
 
 export default function Hero() {
   const reduce = useReducedMotion();
+
+  // Use the 3D avatar only on capable desktops; otherwise keep the particle hero.
+  const [use3D, setUse3D] = useState(false);
+  const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    const ok =
+      window.matchMedia('(pointer: fine)').matches &&
+      window.innerWidth >= 1024 &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!ok) return;
+    const t = window.setTimeout(() => setUse3D(true), 1700);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  // Unmount the WebGL scene once the hero scrolls away (perf + stops the render
+  // loop from competing with the rest of the page).
+  useEffect(() => {
+    const onScroll = () => setActive(window.scrollY < window.innerHeight * 1.1);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Scroll-linked dissolve: the hero fades + scales as content scrolls over it.
   const { scrollY } = useScroll();
@@ -47,7 +73,7 @@ export default function Hero() {
       className="sticky top-0 z-10 flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#050505]"
       aria-label="Introduction"
     >
-      <ParticleCanvas />
+      {use3D ? active && <Avatar3D /> : <ParticleCanvas />}
       <GridBackground opacity={0.08} size={72} />
 
       {/* Cursor glow */}
@@ -59,66 +85,51 @@ export default function Hero() {
         />
       )}
 
-      {/* Vignette so type stays legible over particles */}
+      {/* Vignette so the type stays legible over the canvas */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 28%, rgba(5,5,5,0.85) 92%)',
+          background: 'radial-gradient(ellipse at center, transparent 28%, rgba(5,5,5,0.85) 92%)',
         }}
       />
 
       <div className="section-shell relative z-10 flex flex-col items-center text-center">
-        <motion.p
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="section-label mb-7"
-        >
+        <p className="hero-fade section-label mb-7" style={{ animationDelay: '0.05s' }}>
           // Brand &amp; Content Leader
-        </motion.p>
+        </p>
 
         <h1 className="heading-display" aria-label={hero.wordmark}>
           <span aria-hidden="true" style={{ perspective: '700px', display: 'inline-block' }}>
             {letters.map((ch, i) => (
-              <motion.span
+              <span
                 key={i}
-                variants={charReveal(i)}
-                initial={reduce ? false : 'hidden'}
-                animate="visible"
-                className="inline-block"
-                style={{ transformStyle: 'preserve-3d' }}
+                className="hero-char"
+                style={{ animationDelay: `${i * 0.07}s`, transformStyle: 'preserve-3d' }}
               >
                 {ch}
-              </motion.span>
+              </span>
             ))}
           </span>
         </h1>
 
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.7, ease: EASE }}
-          className="mt-8 max-w-[780px] text-balance font-display text-[clamp(1.4rem,3vw,2.4rem)] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--text-primary)]"
+        <p
+          className="hero-fade mt-8 max-w-[780px] text-balance font-display text-[clamp(1.4rem,3vw,2.4rem)] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--text-primary)]"
+          style={{ animationDelay: '0.55s' }}
         >
           {hero.headline}
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.7, ease: EASE }}
-          className="mono-accent mt-7 max-w-[700px] text-[var(--text-muted)]"
+        <p
+          className="hero-fade mono-accent mt-7 max-w-[700px] text-[var(--text-muted)]"
+          style={{ animationDelay: '0.7s' }}
         >
           {hero.subtitle}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 0.7, ease: EASE }}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
+        <div
+          className="hero-fade mt-10 flex flex-col items-center gap-4 sm:flex-row"
+          style={{ animationDelay: '0.85s' }}
         >
           <Magnetic className="w-full sm:w-auto">
             <button onClick={() => scrollToId(hero.cta.href)} className="btn-primary w-full">
@@ -130,7 +141,7 @@ export default function Hero() {
               {hero.ctaSecondary.label} ↓
             </button>
           </Magnetic>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll-down indicator */}

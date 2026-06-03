@@ -425,6 +425,39 @@
 }
 
 /* ============================================================
+   HERO ENTRANCE (CSS, compositor-driven so the 3D load can't stall it)
+   ============================================================ */
+@keyframes heroCharIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) rotateX(-40deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-char {
+  display: inline-block;
+  opacity: 0;
+  animation: heroCharIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-fade {
+  opacity: 0;
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================
    LENIS SMOOTH SCROLL (recommended base styles)
    ============================================================ */
 html.lenis,
