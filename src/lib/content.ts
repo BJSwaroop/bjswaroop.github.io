@@ -508,8 +508,35 @@ export const about = {
   image: '[IMAGE: Candid portrait of Swaroop, approachable, warm lighting]',
 };
 
+export const journey = {
+  label: '// 09 · THE JOURNEY',
+  heading: 'The Journey',
+  milestones: [
+    {
+      year: '2021',
+      title: 'Started from zero',
+      body: 'Launched Swaroop Talks and shipped four videos on day one, teaching coding in Telugu on a screen recorder with no audience.',
+    },
+    {
+      year: '2024',
+      title: 'The pivot',
+      body: 'Joined Scaler School of Technology as its first content hire, and founded MentiBY Technologies, the platform I wish I’d had in college.',
+    },
+    {
+      year: 'Since 2024',
+      title: 'Building the brand',
+      body: 'Associate Director, Brand & Content. Grew five SST channels from scratch and built the AI systems behind a lean, agency-scale team.',
+    },
+    {
+      year: 'Now',
+      title: 'Still building',
+      body: 'A million-plus organic audience across 18 channels and systems, and a lot left to build.',
+    },
+  ],
+};
+
 export const brands = {
-  label: '// 09 · BRANDS',
+  label: '// 10 · BRANDS',
   heading: 'Collaborations',
   cta: { label: 'For collaborations', href: 'mailto:workwithswaroop@gmail.com' },
   list: [
@@ -539,7 +566,7 @@ export const brands = {
 };
 
 export const speaking = {
-  label: '// 10 · SPEAKING',
+  label: '// 11 · SPEAKING',
   heading: 'Speaking',
   cta: { label: 'Invite me to speak', href: '#contact' },
   events: [
@@ -552,7 +579,7 @@ export const speaking = {
 };
 
 export const contact = {
-  label: '// 11 · CONTACT',
+  label: '// 12 · CONTACT',
   heading: 'Let’s Talk',
   subheading: 'Whether you’re hiring, want to collaborate, or need a speaker, one email is all it takes.',
   email: 'workwithswaroop@gmail.com',

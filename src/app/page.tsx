@@ -11,6 +11,7 @@ import Testimonials from '@/components/Testimonials';
 import Empire from '@/components/Empire';
 import Systems from '@/components/Systems';
 import About from '@/components/About';
+import Timeline from '@/components/Timeline';
 import Brands from '@/components/Brands';
 import Speaking from '@/components/Speaking';
 import Contact from '@/components/Contact';
@@ -38,6 +39,7 @@ export default function Home() {
           <Empire />
           <Systems />
           <About />
+          <Timeline />
           <Brands />
           <Speaking />
           <Contact />
