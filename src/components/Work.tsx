@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import ImagePlaceholder from './ImagePlaceholder';
 import SectionReveal from './SectionReveal';
-import WorkAccordion from './WorkAccordion';
+import ProjectRows from './ProjectRows';
 import { work } from '@/lib/content';
 
 type Video = (typeof work.flagship.videos)[number];
@@ -85,10 +85,8 @@ export default function Work() {
           </div>
         </SectionReveal>
 
-        {/* Campaign accordion */}
-        <div className="mt-12">
-          <WorkAccordion />
-        </div>
+        {/* Campaigns as alternating rows with real video thumbnails */}
+        <ProjectRows />
       </div>
 
       {/* Flagship strip (personal channel) */}

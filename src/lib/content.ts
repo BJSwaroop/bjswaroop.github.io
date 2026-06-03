@@ -244,7 +244,7 @@ export const roles = {
 export const work = {
   label: '// 05 · WORK',
   heading: 'Selected Work',
-  intro: 'Campaigns I led at Scaler School of Technology. Tap any card to open it.',
+  intro: 'Campaigns I led at Scaler School of Technology. Real videos, real outcomes.',
   growth: [
     { channel: 'SST YouTube', from: '4K', to: '78K' },
     { channel: 'SST LinkedIn', from: '2K', to: '17K' },
