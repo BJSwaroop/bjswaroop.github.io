@@ -5,6 +5,7 @@ import Loader from '@/components/Loader';
 import Hero from '@/components/Hero';
 import ProofBar from '@/components/ProofBar';
 import WhatIDo from '@/components/WhatIDo';
+import SectionDivider from '@/components/SectionDivider';
 import Hiring from '@/components/Hiring';
 import Qualities from '@/components/Qualities';
 import Roles from '@/components/Roles';
@@ -34,18 +35,31 @@ export default function Home() {
         {/* Everything below scrolls OVER the fading hero (z-20, opaque background). */}
         <div className="relative z-20 bg-[#050505]">
           <ProofBar />
+          <SectionDivider />
           <WhatIDo />
+          <SectionDivider />
           <Hiring />
+          <SectionDivider />
           <Qualities />
+          <SectionDivider />
           <Roles />
+          <SectionDivider />
           <Work />
+          <SectionDivider />
           <Testimonials />
+          <SectionDivider />
           <Empire />
+          <SectionDivider />
           <Systems />
+          <SectionDivider />
           <About />
+          <SectionDivider />
           <Timeline />
+          <SectionDivider />
           <Brands />
+          <SectionDivider />
           <Speaking />
+          <SectionDivider />
           <Contact />
         </div>
       </main>

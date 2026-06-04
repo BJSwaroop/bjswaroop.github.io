@@ -59,7 +59,13 @@ export const whatIDo = {
     {
       title: 'Organic growth from zero',
       tag: 'Audience building',
-      body: 'I grow channels without paid spend. SST YouTube went 4K to 78K, LinkedIn 2K to 17K, Instagram 4K to 26K. My own audience crossed a million the same way.',
+      body: 'I grow channels without paid spend, the slow way that compounds.',
+      growth: [
+        { name: 'SST YouTube', from: 4, to: 78 },
+        { name: 'SST LinkedIn', from: 2, to: 17 },
+        { name: 'SST Instagram', from: 4, to: 26 },
+        { name: 'My YouTube', from: 80, to: 460 },
+      ],
       points: [
         'Content-market fit in Telugu and English',
         'Distribution you own, not attention you rent',
@@ -435,7 +441,7 @@ export const empire = {
   heading: 'The Content Ecosystem I Built',
   subheading: '18 channels and systems. One flywheel.',
   description:
-    'The content channels and AI systems I run, all wired together. Every channel feeds the next: the personal channels build trust, the SST channels convert, and the AI systems keep it all running on their own. It’s how one person keeps the whole thing moving without a 50-person team. Hire me and you get the machine, not just one more name on the org chart.',
+    'Channels and AI systems, all wired together. The personal channels build trust, the SST channels convert, the AI systems keep it running. One person, not a 50-person team.',
   rings: [
     {
       name: 'Personal Channels',
@@ -513,42 +519,36 @@ export const systems = {
   label: '// 07 · AI LEVERAGE',
   heading: 'How I Produce 10x With a Lean Team',
   subheading:
-    'I don’t just use AI, I build content systems with it. Each one does the job that would normally take three to five people.',
+    'I don’t just use AI, I build with it. Each system does the work of a small team.',
   engines: [
     {
       name: 'Carousel Engine',
-      description:
-        'An Instagram carousel generator that runs on its own. It researches the topic, writes the slides, and exports finished PNGs. Five a day.',
-      stat: '5 posts/day',
+      description: 'Researches a topic, writes the slides, exports finished carousels. Hands-off.',
+      stat: '5 a day',
     },
     {
       name: 'Reel Engine',
-      description:
-        'A reel pipeline with SSML scripts, a critic that scores them against a rubric, HeyGen avatar generation, and an automated publishing queue.',
-      stat: 'SSML + critic',
+      description: 'Scripts reels, scores each against a rubric, and queues the winners.',
+      stat: 'Scripted + scored',
     },
     {
-      name: 'Brand Reply System',
-      description:
-        'Drafts replies to collaboration emails. It picks the right channel, applies pricing logic, matches the audience, and keeps the tone consistent.',
+      name: 'Reply System',
+      description: 'Auto-drafts collab-email replies with the right channel, pricing and tone.',
       stat: 'Auto-draft',
     },
     {
       name: 'CreatorOS',
-      description:
-        'A multi-agent LinkedIn pipeline that researches, drafts, critiques, polishes and schedules. The whole loop runs without me babysitting it.',
+      description: 'A multi-agent pipeline that researches, writes and schedules LinkedIn posts.',
       stat: 'Multi-agent',
     },
     {
-      name: 'BrandForge AI',
-      description:
-        'Turns a brand’s documents, transcripts and calls into a usable voice and messaging guide. What used to take weeks now takes days.',
+      name: 'BrandForge',
+      description: 'Turns a brand’s docs and calls into a ready-to-use voice guide in days.',
       stat: 'Voice guides',
     },
     {
       name: 'Content Stack',
-      description:
-        '20+ custom AI skills: long-form writer, short-form writer, collab assistant, knowledge base, all carrying my voice.',
+      description: '20+ custom AI skills, all writing in my voice.',
       stat: '20+ skills',
     },
   ],

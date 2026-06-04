@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { whatIDo } from '@/lib/content';
+import PlatformIcon from './PlatformIcon';
+import AnimatedCounter from './AnimatedCounter';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -48,6 +50,7 @@ export default function WhatIDo() {
         <ul className="border-t border-[var(--border)]">
           {whatIDo.items.map((item, i) => {
             const isOpen = open === i;
+            const growth = (item as { growth?: { name: string; from: number; to: number }[] }).growth;
             return (
               <li key={item.title} className="border-b border-[var(--border)]">
                 <motion.div
@@ -105,6 +108,29 @@ export default function WhatIDo() {
                           <p className="body-lg max-w-[60ch] text-[var(--text-primary)]/85">
                             {item.body}
                           </p>
+                          {growth && (
+                            <div className="mt-6 flex max-w-[480px] flex-col gap-3.5">
+                              {growth.map((g) => (
+                                <div key={g.name} className="flex items-center gap-3">
+                                  <PlatformIcon name={g.name} className="h-4 w-4 shrink-0 text-[var(--accent)]" />
+                                  <span className="w-28 shrink-0 text-sm text-[var(--text-muted)]">{g.name}</span>
+                                  <span className="font-display text-sm text-[var(--text-dim)]">{g.from}K</span>
+                                  <div className="relative h-px flex-1 bg-[var(--border)]">
+                                    <motion.span
+                                      className="absolute inset-y-0 left-0 block bg-[var(--accent)]"
+                                      initial={reduce ? false : { width: 0 }}
+                                      whileInView={{ width: '100%' }}
+                                      viewport={{ once: true }}
+                                      transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+                                    />
+                                  </div>
+                                  <span className="w-14 shrink-0 text-right font-display text-base font-bold text-[var(--accent)]">
+                                    <AnimatedCounter value={g.to} suffix="K" />
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                           <ul className="mt-4 flex flex-col gap-2">
                             {item.points.map((p) => (
                               <li
