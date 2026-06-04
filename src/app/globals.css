@@ -149,7 +149,7 @@
     line-height: 1;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
-    font-size: clamp(1.1rem, 13cqw, 2.6rem);
+    font-size: clamp(2.4rem, 15cqw, 4.5rem);
   }
 
   /* Mono section markers like  // 01 - PROOF  */
@@ -350,6 +350,12 @@
   perspective: 800px;
 }
 
+/* Pause the spinning rings while hovering the stage so nodes become
+   stationary, catchable targets (the fix for "planets aren't clickable"). */
+.orbit-stage:hover .orbit-ring {
+  animation-play-state: paused;
+}
+
 .orbit-ring {
   position: absolute;
   top: 50%;
@@ -406,15 +412,22 @@
 }
 .orbit-node-dot {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  margin-left: -7px;
-  margin-top: -7px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 10px var(--accent-glow-strong);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   cursor: pointer;
+}
+/* Invisible larger hit area so the small dots are easy to click. */
+.orbit-node-dot::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
 }
 .orbit-node-dot[data-ring='blue'] {
   background: #4b8ef0;

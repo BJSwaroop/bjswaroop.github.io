@@ -22,16 +22,20 @@ export default function ProofBar() {
           initial={reduce ? false : 'hidden'}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 xl:grid-cols-6"
+          className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-3"
         >
           {proof.stats.map((stat, i) => (
             <motion.div
               key={i}
               variants={reduce ? undefined : fadeUpVariant}
-              className="stat-cell flex min-w-0 flex-col gap-3 border-l border-[var(--border)] pl-4 sm:pl-5"
+              className="stat-cell flex min-w-0 flex-col gap-2"
             >
-              <span className="stat-num text-[var(--text-primary)]">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              <span className="stat-num font-black text-[var(--text-primary)]">
+                <AnimatedCounter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  compact={stat.value >= 100000}
+                />
               </span>
               <span className="label-caption text-[var(--text-muted)]">{stat.label}</span>
             </motion.div>

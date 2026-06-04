@@ -7,6 +7,7 @@ import SectionReveal from './SectionReveal';
 import ProjectRows from './ProjectRows';
 import { work } from '@/lib/content';
 import SplitReveal from './SplitReveal';
+import PlatformIcon from './PlatformIcon';
 
 type Video = (typeof work.flagship.videos)[number];
 
@@ -68,8 +69,11 @@ export default function Work() {
           <p className="label-caption mb-4 text-[var(--text-muted)]">Channels I grew from scratch</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {work.growth.map((g) => (
-              <div key={g.channel} className="border border-[var(--border)] p-5">
-                <p className="label-caption text-[var(--text-muted)]">{g.channel}</p>
+              <div key={g.channel} className="glow-card border border-[var(--border)] p-5">
+                <p className="label-caption flex items-center gap-2 text-[var(--text-muted)]">
+                  <PlatformIcon name={g.channel} className="h-4 w-4 text-[var(--accent)]" />
+                  {g.channel}
+                </p>
                 <p className="mt-3 flex items-baseline gap-2">
                   <span className="font-display text-lg text-[var(--text-dim)]">{g.from}</span>
                   <span className="text-[var(--accent)]" aria-hidden="true">

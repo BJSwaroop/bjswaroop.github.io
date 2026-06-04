@@ -5,13 +5,17 @@ import { animate, useReducedMotion, type AnimationPlaybackControls } from 'frame
 import { useInView } from '@/hooks/useInView';
 
 // Indian-format grouping per the brief.
-const fmt = new Intl.NumberFormat('en-IN');
+const fmtIN = new Intl.NumberFormat('en-IN');
+// Compact notation for large hero numbers (1,000,000 -> "1M", 78,000 -> "78K").
+const fmtCompact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 0 });
 
 interface AnimatedCounterProps {
   value: number;
   suffix?: string;
   /** Count-up duration in seconds. */
   duration?: number;
+  /** Render large numbers compactly (1M, 78K) instead of full grouping. */
+  compact?: boolean;
   className?: string;
 }
 
@@ -22,12 +26,14 @@ export default function AnimatedCounter({
   value,
   suffix = '',
   duration = 2,
+  compact = false,
   className = '',
 }: AnimatedCounterProps) {
   const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.3, once: true });
   const reduce = useReducedMotion();
   const [display, setDisplay] = useState('0');
   const started = useRef(false);
+  const fmt = compact ? fmtCompact : fmtIN;
 
   useEffect(() => {
     if (!inView || started.current) return;

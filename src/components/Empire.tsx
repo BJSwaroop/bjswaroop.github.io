@@ -3,6 +3,7 @@
 import { CSSProperties, useState } from 'react';
 import SectionReveal from './SectionReveal';
 import GridBackground from './GridBackground';
+import PlatformIcon from './PlatformIcon';
 import { empire } from '@/lib/content';
 
 type Prop = { name: string; platform: string; handle: string };
@@ -72,6 +73,7 @@ export default function Empire() {
                         aria-label={`${prop.name} - ${prop.platform}, ${prop.handle}`}
                         onMouseEnter={() => setActive({ ...prop, ring: ring.name })}
                         onFocus={() => setActive({ ...prop, ring: ring.name })}
+                        onClick={() => setActive({ ...prop, ring: ring.name })}
                       />
                     </div>
                   );
@@ -83,6 +85,7 @@ export default function Empire() {
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 w-[240px] -translate-x-1/2 -translate-y-1/2 text-center">
               {active ? (
                 <div className="border border-[var(--border-hover)] bg-[var(--bg-card)]/90 px-5 py-4 backdrop-blur-sm">
+                  <PlatformIcon name={active.platform} className="mx-auto mb-2 h-6 w-6 text-[var(--accent)]" />
                   <p className="font-display text-lg font-bold text-[var(--text-primary)]">
                     {active.name}
                   </p>
