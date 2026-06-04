@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import ImagePlaceholder from './ImagePlaceholder';
 import SectionReveal from './SectionReveal';
 import ProjectRows from './ProjectRows';
 import { work } from '@/lib/content';
@@ -19,16 +18,35 @@ function VideoCard({ v }: { v: Video }) {
       rel="noopener noreferrer"
       className="glow-card group block w-[280px] shrink-0 overflow-hidden transition-transform duration-300 hover:-translate-y-1 sm:w-[340px]"
     >
-      <div className="relative">
-        <ImagePlaceholder label={v.image} aspect="16/9" className="w-full" />
-        <span className="absolute right-3 top-3 rounded-[4px] bg-black/70 px-2 py-1 font-mono text-[0.65rem] text-[var(--accent)]">
-          {v.views} views
+      <div
+        className="relative aspect-video overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #181818, #0a0a0a)' }}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
+            backgroundSize: '26px 26px',
+          }}
+        />
+        <span
+          aria-hidden="true"
+          className="absolute -right-6 -top-6 h-28 w-28 rounded-full blur-2xl"
+          style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.28), transparent 70%)' }}
+        />
+        <span className="absolute left-4 top-4 font-display text-2xl font-black text-[var(--text-primary)]">
+          {v.views}
+          <span className="ml-1 align-middle font-mono text-[0.6rem] font-normal uppercase tracking-wider text-[var(--text-dim)]">
+            views
+          </span>
         </span>
-        <span className="absolute bottom-3 right-3 rounded-[4px] bg-black/70 px-2 py-1 font-mono text-[0.65rem] text-[var(--text-muted)]">
+        <span className="absolute bottom-4 right-4 rounded-[4px] bg-black/40 px-2 py-1 font-mono text-[0.65rem] text-[var(--text-muted)]">
           {v.duration}
         </span>
-        <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="var(--accent)" aria-hidden="true">
+        <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--accent)]/50 bg-black/30 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <svg width="15" height="17" viewBox="0 0 14 16" fill="var(--accent)" aria-hidden="true">
             <path d="M0 0l14 8-14 8z" />
           </svg>
         </span>
