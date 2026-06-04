@@ -126,14 +126,56 @@ function Row({ c, i }: { c: Campaign; i: number }) {
   );
 }
 
-// Selected Work as full-width alternating rows. Campaigns with a video show
-// its real thumbnail; the rest get a designed amber panel.
-export default function ProjectRows() {
+// Campaigns with a video render as full-width alternating rows with the real
+// thumbnail. The rest ("More work", no video) render as compact text cards
+// below, with no image.
+function TextCard({ c }: { c: Campaign }) {
   return (
-    <div className="mt-14 flex flex-col gap-[clamp(56px,8vh,96px)]">
-      {work.campaigns.map((c, i) => (
-        <Row key={i} c={c} i={i} />
-      ))}
+    <div className="glow-card flex flex-col border border-[var(--border)] p-6">
+      <span className="mono-accent mb-3 w-fit rounded-[4px] border border-[var(--border-hover)] px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+        {c.category}
+      </span>
+      <h4 className="font-display text-lg font-bold leading-tight text-[var(--text-primary)]">
+        {c.title}
+      </h4>
+      <p className="mt-2 text-sm text-[var(--text-muted)]">{c.summary}</p>
+      <p className="mt-3 border-l-2 border-[var(--accent)] pl-3 text-sm text-[var(--text-primary)]">
+        {c.impact}
+      </p>
+      {c.link && (
+        <a
+          href={c.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mono-accent mt-4 inline-flex items-center gap-2 text-[var(--accent)] underline-offset-4 hover:underline"
+        >
+          {c.link.label} ↗
+        </a>
+      )}
     </div>
+  );
+}
+
+export default function ProjectRows() {
+  const featured = work.campaigns.filter((c) => youtubeId(c.link?.href));
+  const more = work.campaigns.filter((c) => !youtubeId(c.link?.href));
+  return (
+    <>
+      <div className="mt-14 flex flex-col gap-[clamp(56px,8vh,96px)]">
+        {featured.map((c, i) => (
+          <Row key={c.title} c={c} i={i} />
+        ))}
+      </div>
+      {more.length > 0 && (
+        <div className="mt-[clamp(56px,8vh,96px)]">
+          <p className="section-label mb-6">// More work</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {more.map((c) => (
+              <TextCard key={c.title} c={c} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 }

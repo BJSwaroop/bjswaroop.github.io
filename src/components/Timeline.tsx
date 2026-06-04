@@ -50,6 +50,7 @@ export default function Timeline() {
                 />
                 <span className="mono-accent text-[var(--accent)]">{m.year}</span>
                 <h3 className="heading-sub mt-1 text-[var(--text-primary)]">{m.title}</h3>
+                {m.org && <p className="mono-accent mt-1 text-[var(--text-dim)]">{m.org}</p>}
                 <p className="mt-2 max-w-[620px] text-[var(--text-muted)]">{m.body}</p>
               </SectionReveal>
             ))}

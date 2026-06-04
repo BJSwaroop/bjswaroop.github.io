@@ -8,7 +8,6 @@ import WhatIDo from '@/components/WhatIDo';
 import SectionDivider from '@/components/SectionDivider';
 import Hiring from '@/components/Hiring';
 import Qualities from '@/components/Qualities';
-import Roles from '@/components/Roles';
 import Work from '@/components/Work';
 import Testimonials from '@/components/Testimonials';
 import Empire from '@/components/Empire';
@@ -41,8 +40,6 @@ export default function Home() {
           <Hiring />
           <SectionDivider />
           <Qualities />
-          <SectionDivider />
-          <Roles />
           <SectionDivider />
           <Work />
           <SectionDivider />

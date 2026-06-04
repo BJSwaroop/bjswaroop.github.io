@@ -20,7 +20,7 @@ export const siteConfig = {
 
 export const nav = {
   links: [
-    { label: 'What I Run', href: '#roles' },
+    { label: 'What I Do', href: '#whatido' },
     { label: 'Work', href: '#work' },
     { label: 'Ecosystem', href: '#empire' },
     { label: 'About', href: '#about' },
@@ -281,7 +281,7 @@ export const work = {
         'Protected the founder’s time so the shoot day ran without a single hiccup.',
       ],
       impact: 'A flagship brand asset, delivered flawlessly across the world, coordinated by one person.',
-      link: null,
+      link: { label: 'Watch the film', href: 'https://www.youtube.com/watch?v=dhaw2e6MBQ4' },
     },
     {
       title: 'UGC Creator Engine & Team',
@@ -339,7 +339,7 @@ export const work = {
         'Real stories, nothing staged.',
       ],
       impact: 'The content parents watch before saying yes to a ₹10L/year decision.',
-      link: null,
+      link: { label: 'Watch the stories', href: 'https://www.youtube.com/watch?v=JOFrIlK68ck' },
     },
     {
       title: 'Super Mentor Sessions',
@@ -350,7 +350,7 @@ export const work = {
         'In-house capture, fast edit, fast ship. Turnaround in days, not weeks.',
       ],
       impact: 'A steady drumbeat of credibility content that keeps the brand warm between the big moments.',
-      link: { label: 'Watch a session', href: 'https://www.youtube.com/watch?v=boox_CgmL68' },
+      link: { label: 'Watch a session', href: 'https://www.youtube.com/watch?v=M7H1SHc1f2Q' },
     },
     {
       title: 'Robodog Hero Campaign',
@@ -571,23 +571,45 @@ export const journey = {
   milestones: [
     {
       year: '2021',
+      org: 'YouTube · Tech Creator',
       title: 'Started from zero',
-      body: 'Launched Swaroop Talks and shipped four videos on day one, teaching coding in Telugu on a screen recorder with no audience.',
+      body: 'Launched Swaroop Talks, teaching coding in Telugu on a screen recorder with no audience. It grew into 460K+ subscribers and 28.8M views.',
+    },
+    {
+      year: '2022',
+      org: 'Enligence Technologies · Intern',
+      title: 'Engineer in the trenches',
+      body: 'Full-stack intern shipping real products. The engineering foundation under everything I build now.',
+    },
+    {
+      year: '2023',
+      org: 'MentiBY · Founder',
+      title: 'Built what I wish I had',
+      body: 'Founded MentiBY, a cohort platform: 200K+ users, 50K+ downloads, profitable from cohort one. Also shipped full-stack work at Curepoint.',
     },
     {
       year: '2024',
-      title: 'The pivot',
-      body: 'Joined Scaler School of Technology as its first content hire, and founded MentiBY Technologies, the platform I wish I’d had in college.',
+      org: 'Scaler · Organic Growth Specialist',
+      title: 'Into growth',
+      body: 'Joined Scaler School of Technology as its first content hire, and started growing the channels from scratch.',
     },
     {
-      year: 'Since 2024',
-      title: 'Building the brand',
-      body: 'Associate Director, Brand & Content. Grew five SST channels from scratch and built the AI systems behind a lean, agency-scale team.',
+      year: '2025',
+      org: 'Scaler · Content & Brand Lead',
+      title: 'Owning the brand',
+      body: 'Took the brand and the content engine across every channel, and built the AI systems behind a lean, agency-scale team.',
+    },
+    {
+      year: '2026',
+      org: 'Scaler · Associate Director of Brand',
+      title: 'Leading brand & content',
+      body: 'Promoted to Associate Director. 1M+ organic audience across 18 channels and systems.',
     },
     {
       year: 'Now',
+      org: '',
       title: 'Still building',
-      body: 'A million-plus organic audience across 18 channels and systems, and a lot left to build.',
+      body: 'Engineer by degree, creator by grit, growth marketer by design. And a lot left to build.',
     },
   ],
 };
