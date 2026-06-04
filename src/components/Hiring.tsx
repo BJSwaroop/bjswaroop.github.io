@@ -44,7 +44,7 @@ export default function Hiring() {
           initial={reduce ? false : 'hidden'}
           whileInView="visible"
           viewport={{ once: true, amount: 0.12 }}
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {hiring.painPoints.map((p, i) => {
             const isFlipped = flipped[i];
@@ -53,7 +53,7 @@ export default function Hiring() {
                 key={i}
                 variants={reduce ? undefined : fadeUpVariant}
                 style={perspective}
-                className="h-[260px]"
+                className="h-[196px]"
               >
                 <button
                   type="button"
@@ -64,23 +64,23 @@ export default function Hiring() {
                 >
                   <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
                     {/* Front - the frustration */}
-                    <div className="flip-card-face justify-between rounded-[4px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors group-hover:border-white/25">
+                    <div className="flip-card-face rounded-[4px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-colors group-hover:border-white/25">
                       <span className="mono-accent text-[var(--text-dim)]">0{i + 1}</span>
-                      <p className="font-display text-lg font-bold leading-snug text-[var(--text-primary)]">
+                      <p className="mt-2.5 font-display text-[1.05rem] font-bold leading-snug text-[var(--text-primary)]">
                         {p.pain}
                       </p>
-                      <span className="mono-accent inline-flex items-center gap-2 text-[var(--text-dim)] transition-colors group-hover:text-[var(--accent)]">
+                      <span className="mono-accent mt-auto inline-flex items-center gap-2 text-[var(--text-dim)] transition-colors group-hover:text-[var(--accent)]">
                         <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
                         Sounds familiar?
                       </span>
                     </div>
 
                     {/* Back - how I answer it */}
-                    <div className="flip-card-face flip-card-back justify-between rounded-[4px] border border-[var(--accent)]/40 bg-[var(--accent-glow)] p-6 backdrop-blur-sm">
-                      <p className="text-[0.95rem] leading-relaxed text-[var(--text-primary)]">
+                    <div className="flip-card-face flip-card-back rounded-[4px] border border-[var(--accent)]/40 bg-[var(--accent-glow)] p-5 backdrop-blur-sm">
+                      <p className="text-[0.88rem] leading-relaxed text-[var(--text-primary)]">
                         {p.counter}
                       </p>
-                      <span className="mono-accent w-fit rounded-[4px] border border-[var(--accent)]/50 px-2.5 py-1 text-[var(--accent)]">
+                      <span className="mono-accent mt-auto w-fit rounded-[4px] border border-[var(--accent)]/50 px-2.5 py-1 text-[var(--accent)]">
                         {p.trait}
                       </span>
                     </div>
@@ -92,7 +92,7 @@ export default function Hiring() {
         </motion.div>
 
         {/* Gamified tally + dynamic verdict */}
-        <div className="mt-10 border-t border-[var(--border)] pt-10">
+        <div className="mt-8 border-t border-[var(--border)] pt-7">
           <div className="mono-accent flex items-center justify-between">
             <span className="text-[var(--text-muted)]" aria-live="polite">
               {flippedCount}/{total} sound familiar
@@ -108,7 +108,7 @@ export default function Hiring() {
               transition={{ duration: 0.4, ease: EASE }}
             />
           </div>
-          <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="heading-sub text-[var(--text-primary)]">{verdict}</p>
             <Magnetic className="shrink-0">
               <a href={hiring.cta.href} className="btn-primary">
