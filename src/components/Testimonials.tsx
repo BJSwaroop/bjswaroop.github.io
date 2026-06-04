@@ -40,9 +40,17 @@ export default function Testimonials() {
               <blockquote className="mt-3 flex-1 italic leading-relaxed text-[var(--text-muted)]">
                 {t.quote}
               </blockquote>
-              <figcaption className="mt-7">
-                <p className="font-display font-bold text-[var(--text-primary)]">{t.name}</p>
-                <p className="mono-accent text-[var(--text-dim)]">{t.title}</p>
+              <figcaption className="mt-7 flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--accent)]/40 bg-[var(--accent-glow)] font-display font-bold text-[var(--accent)]"
+                >
+                  {t.name.charAt(0)}
+                </span>
+                <div>
+                  <p className="font-display font-bold text-[var(--text-primary)]">{t.name}</p>
+                  <p className="mono-accent text-[var(--text-dim)]">{t.title}</p>
+                </div>
               </figcaption>
             </motion.figure>
           ))}

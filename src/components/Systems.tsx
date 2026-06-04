@@ -5,6 +5,7 @@ import DotMatrix from './DotMatrix';
 import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
 import { systems } from '@/lib/content';
 import SplitReveal from './SplitReveal';
+import SystemIcon from './SystemIcon';
 
 export default function Systems() {
   const reduce = useReducedMotion();
@@ -38,10 +39,11 @@ export default function Systems() {
               <span className="mono-accent absolute right-5 top-5 text-[var(--accent)]">
                 {engine.stat}
               </span>
-              <h3 className="pr-24 font-display text-xl font-bold text-[var(--text-primary)]">
+              <SystemIcon name={engine.name} className="h-7 w-7 text-[var(--accent)]" />
+              <h3 className="mt-4 pr-20 font-display text-xl font-bold text-[var(--text-primary)]">
                 {engine.name}
               </h3>
-              <p className="mt-3 text-[var(--text-muted)]">{engine.description}</p>
+              <p className="mt-2 text-[var(--text-muted)]">{engine.description}</p>
             </motion.div>
           ))}
         </motion.div>

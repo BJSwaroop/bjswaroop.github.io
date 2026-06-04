@@ -93,8 +93,13 @@ function Row({ c, i }: { c: Campaign; i: number }) {
       <div className={reversed ? 'lg:order-2' : ''}>{visual}</div>
 
       <div className={reversed ? 'lg:order-1' : ''}>
-        <div className="flex items-center gap-3">
-          <span className="mono-accent tabular-nums text-[var(--accent)]">{pad(i)}</span>
+        <div className="mb-1 flex items-center gap-4">
+          <span
+            className="font-display text-4xl font-black leading-none tabular-nums"
+            style={{ color: 'rgba(232,168,56,0.3)' }}
+          >
+            {pad(i)}
+          </span>
           <span className="inline-block rounded-[4px] border border-[var(--border-hover)] px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-[var(--text-muted)]">
             {c.category}
           </span>
