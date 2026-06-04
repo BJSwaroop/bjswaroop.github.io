@@ -339,7 +339,10 @@ export const work = {
         'Real stories, nothing staged.',
       ],
       impact: 'The content parents watch before saying yes to a ₹10L/year decision.',
-      link: { label: 'Watch the stories', href: 'https://www.youtube.com/watch?v=JOFrIlK68ck' },
+      link: {
+        label: 'Watch the series',
+        href: 'https://www.youtube.com/watch?v=JOFrIlK68ck&list=PL_aMuHABgX0j0KtjKUvZNw23FM_5Og525',
+      },
     },
     {
       title: 'Super Mentor Sessions',
@@ -350,7 +353,10 @@ export const work = {
         'In-house capture, fast edit, fast ship. Turnaround in days, not weeks.',
       ],
       impact: 'A steady drumbeat of credibility content that keeps the brand warm between the big moments.',
-      link: { label: 'Watch a session', href: 'https://www.youtube.com/watch?v=M7H1SHc1f2Q' },
+      link: {
+        label: 'Watch the sessions',
+        href: 'https://www.youtube.com/watch?v=M7H1SHc1f2Q&list=PL_aMuHABgX0g_HRBGUR0LbYm8QhDf-hy8',
+      },
     },
     {
       title: 'Robodog Hero Campaign',
