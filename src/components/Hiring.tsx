@@ -2,7 +2,7 @@
 
 import { CSSProperties, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { staggerContainer, fadeUpVariant } from '@/lib/motionVariants';
+import { staggerContainer, fadeUpVariant, EASE } from '@/lib/motionVariants';
 import Magnetic from './Magnetic';
 import { hiring } from '@/lib/content';
 
@@ -16,6 +16,15 @@ export default function Hiring() {
     setFlipped((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
 
   const flippedCount = flipped.filter(Boolean).length;
+  const total = hiring.painPoints.length;
+  const verdict =
+    flippedCount === 0
+      ? 'Tap the worries that sound familiar.'
+      : flippedCount <= 2
+      ? `${flippedCount} landed. That’s already a reason to talk.`
+      : flippedCount <= 4
+      ? `${flippedCount} of these? We should definitely talk.`
+      : `${flippedCount} of ${total}. Honestly, you need me. Let’s talk.`;
 
   return (
     <section
@@ -62,7 +71,7 @@ export default function Hiring() {
                       </p>
                       <span className="mono-accent inline-flex items-center gap-2 text-[var(--text-dim)] transition-colors group-hover:text-[var(--accent)]">
                         <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                        Tap to flip
+                        Sounds familiar?
                       </span>
                     </div>
 
@@ -82,17 +91,31 @@ export default function Hiring() {
           })}
         </motion.div>
 
-        <p className="section-label mt-6 text-right text-[var(--text-dim)]" aria-live="polite">
-          {flippedCount}/{hiring.painPoints.length} revealed
-        </p>
-
-        <div className="mt-10 flex flex-col items-start gap-5 border-t border-[var(--border)] pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="heading-sub text-[var(--text-primary)]">{hiring.closingLine}</p>
-          <Magnetic className="shrink-0">
-            <a href={hiring.cta.href} className="btn-primary">
-              {hiring.cta.label}
-            </a>
-          </Magnetic>
+        {/* Gamified tally + dynamic verdict */}
+        <div className="mt-10 border-t border-[var(--border)] pt-10">
+          <div className="mono-accent flex items-center justify-between">
+            <span className="text-[var(--text-muted)]" aria-live="polite">
+              {flippedCount}/{total} sound familiar
+            </span>
+            <span className="text-[var(--accent)]">
+              {Math.round((flippedCount / total) * 100)}%
+            </span>
+          </div>
+          <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[var(--bg-subtle)]">
+            <motion.span
+              className="block h-full rounded-full bg-[var(--accent)]"
+              animate={{ width: `${(flippedCount / total) * 100}%` }}
+              transition={{ duration: 0.4, ease: EASE }}
+            />
+          </div>
+          <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="heading-sub text-[var(--text-primary)]">{verdict}</p>
+            <Magnetic className="shrink-0">
+              <a href={hiring.cta.href} className="btn-primary">
+                {hiring.cta.label}
+              </a>
+            </Magnetic>
+          </div>
         </div>
       </div>
     </section>

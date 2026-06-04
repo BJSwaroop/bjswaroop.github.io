@@ -120,7 +120,7 @@ export const proof = {
 export const hiring = {
   label: "// 02 · IF YOU'RE HIRING",
   heading: 'Sound familiar?',
-  subheading: 'These are the worries I hear most when companies hire for content. Tap any one.',
+  subheading: 'The worries I hear most when companies hire for content. Tap every one that sounds familiar.',
   painPoints: [
     {
       pain: '“They do the tasks but don’t own the outcome.”',

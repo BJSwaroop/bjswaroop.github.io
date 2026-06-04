@@ -11,6 +11,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function WhatIDo() {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(0);
+  const [explored, setExplored] = useState<number[]>([0]);
+  const total = whatIDo.items.length;
+  const allDone = explored.length >= total;
+  const markExplored = (i: number) =>
+    setExplored((prev) => (prev.includes(i) ? prev : [...prev, i]));
+  const openRow = (i: number) => {
+    setOpen(i);
+    markExplored(i);
+  };
 
   return (
     <section id="whatido" className="section-shell scroll-mt-24 py-[var(--section-gap)]">
@@ -44,6 +53,37 @@ export default function WhatIDo() {
           >
             {whatIDo.intro}
           </motion.p>
+
+          {/* Explore-to-unlock XP meter (gamification) */}
+          <div className="mt-9 max-w-[42ch]">
+            <div className="mono-accent flex items-center justify-between">
+              <span className="text-[var(--text-muted)]">
+                {allDone ? 'Full picture unlocked' : 'Explore to unlock'}
+              </span>
+              <span className="text-[var(--accent)]">
+                {explored.length}/{total}
+              </span>
+            </div>
+            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-subtle)]">
+              <motion.span
+                className="block h-full rounded-full bg-[var(--accent)]"
+                animate={{ width: `${(explored.length / total) * 100}%` }}
+                transition={{ duration: 0.5, ease: EASE }}
+              />
+            </div>
+            <AnimatePresence>
+              {allDone && (
+                <motion.p
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-3 text-sm text-[var(--accent)]"
+                >
+                  ✓ You’ve seen the whole stack. That’s the hire.
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Right: expanding capability rows */}
@@ -61,9 +101,12 @@ export default function WhatIDo() {
                 >
                   <button
                     type="button"
-                    onMouseEnter={() => setOpen(i)}
-                    onFocus={() => setOpen(i)}
-                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    onMouseEnter={() => openRow(i)}
+                    onFocus={() => openRow(i)}
+                    onClick={() => {
+                      setOpen(isOpen ? -1 : i);
+                      markExplored(i);
+                    }}
                     aria-expanded={isOpen}
                     className="group flex w-full items-center gap-5 py-6 text-left"
                   >
