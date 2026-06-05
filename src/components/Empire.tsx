@@ -47,7 +47,7 @@ export default function Empire() {
 
         {/* ---------- Desktop: orbital system ---------- */}
         <div className="relative mt-8 hidden md:block">
-          <div className="orbit-stage relative mx-auto h-[640px] w-full max-w-[760px]">
+          <div className="orbit-stage relative mx-auto h-[700px] w-full max-w-[760px]">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display font-black leading-none text-[var(--text-primary)] opacity-[0.035]"

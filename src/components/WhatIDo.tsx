@@ -1,199 +1,138 @@
 'use client';
 
-import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { whatIDo } from '@/lib/content';
 import PlatformIcon from './PlatformIcon';
 import AnimatedCounter from './AnimatedCounter';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+type Growth = { name: string; from: number; to: number }[];
+
+function GrowthRows({ growth, reduce }: { growth: Growth; reduce: boolean | null }) {
+  return (
+    <div className="mt-5 flex flex-col gap-3">
+      {growth.map((g) => (
+        <div key={g.name} className="flex items-center gap-3">
+          <PlatformIcon name={g.name} className="h-4 w-4 shrink-0 text-[var(--accent)]" />
+          <span className="w-24 shrink-0 text-left text-sm text-[var(--text-muted)]">{g.name}</span>
+          <span className="font-display text-sm text-[var(--text-dim)]">{g.from}K</span>
+          <div className="relative h-px flex-1 bg-[var(--border)]">
+            <motion.span
+              className="absolute inset-y-0 left-0 block bg-[var(--accent)]"
+              initial={reduce ? false : { width: 0 }}
+              whileInView={{ width: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+            />
+          </div>
+          <span className="w-14 shrink-0 text-right font-display text-base font-bold text-[var(--accent)]">
+            <AnimatedCounter value={g.to} suffix="K" />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Centered timeline of capabilities with a light that travels down the middle
+// as you scroll (reference-style). Everything is visible for readability.
 export default function WhatIDo() {
   const reduce = useReducedMotion();
-  const [open, setOpen] = useState(0);
-  const [explored, setExplored] = useState<number[]>([0]);
-  const total = whatIDo.items.length;
-  const allDone = explored.length >= total;
-  const markExplored = (i: number) =>
-    setExplored((prev) => (prev.includes(i) ? prev : [...prev, i]));
-  const openRow = (i: number) => {
-    setOpen(i);
-    markExplored(i);
-  };
+  const railRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: railRef,
+    offset: ['start 70%', 'end 65%'],
+  });
+  const fillScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const lightTop = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
     <section id="whatido" className="section-shell scroll-mt-24 py-[var(--section-gap)]">
-      <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        {/* Left: sticky title */}
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <motion.p
-            className="section-label mb-5"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.5, ease: EASE }}
-          >
-            {whatIDo.label}
-          </motion.p>
-          <motion.h2
-            className="heading-section text-[var(--text-primary)]"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: EASE }}
-          >
-            {whatIDo.heading}
-          </motion.h2>
-          <motion.p
-            className="body-lg mt-6 max-w-[42ch] text-[var(--text-muted)]"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-          >
-            {whatIDo.intro}
-          </motion.p>
+      <div className="text-center">
+        <p className="section-label mb-4">{whatIDo.label}</p>
+        <motion.h2
+          className="heading-section text-[var(--text-primary)]"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
+          {whatIDo.heading}
+        </motion.h2>
+        <p className="body-lg mx-auto mt-5 max-w-[48ch] text-[var(--text-muted)]">{whatIDo.intro}</p>
+      </div>
 
-          {/* Explore-to-unlock XP meter (gamification) */}
-          <div className="mt-9 max-w-[42ch]">
-            <div className="mono-accent flex items-center justify-between">
-              <span className="text-[var(--text-muted)]">
-                {allDone ? 'Full picture unlocked' : 'Explore to unlock'}
-              </span>
-              <span className="text-[var(--accent)]">
-                {explored.length}/{total}
-              </span>
-            </div>
-            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-subtle)]">
-              <motion.span
-                className="block h-full rounded-full bg-[var(--accent)]"
-                animate={{ width: `${(explored.length / total) * 100}%` }}
-                transition={{ duration: 0.5, ease: EASE }}
-              />
-            </div>
-            <AnimatePresence>
-              {allDone && (
-                <motion.p
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mt-3 text-sm text-[var(--accent)]"
-                >
-                  ✓ You’ve seen the whole stack. That’s the hire.
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
+      <div ref={railRef} className="relative mx-auto mt-16 max-w-[1000px]">
+        {/* base line (left on mobile, centered on desktop) */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-[19px] top-0 w-px bg-[var(--border)] md:left-1/2 md:-translate-x-1/2"
+        />
+        {/* amber fill that grows with scroll */}
+        <motion.div
+          aria-hidden="true"
+          className="absolute bottom-0 left-[19px] top-0 w-px origin-top bg-[var(--accent)] md:left-1/2 md:-translate-x-1/2"
+          style={{ scaleY: reduce ? 1 : fillScaleY }}
+        />
+        {/* the travelling light */}
+        {!reduce && (
+          <motion.div
+            aria-hidden="true"
+            className="absolute left-[19px] z-20 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent)] md:left-1/2"
+            style={{ top: lightTop, boxShadow: '0 0 18px 5px rgba(232,168,56,0.65)' }}
+          />
+        )}
 
-        {/* Right: expanding capability rows */}
-        <ul className="border-t border-[var(--border)]">
+        <div className="flex flex-col gap-12 md:gap-20">
           {whatIDo.items.map((item, i) => {
-            const isOpen = open === i;
-            const growth = (item as { growth?: { name: string; from: number; to: number }[] }).growth;
+            const left = i % 2 === 0;
+            const growth = (item as { growth?: Growth }).growth;
             return (
-              <li key={item.title} className="border-b border-[var(--border)]">
+              <div key={item.title} className="relative md:grid md:grid-cols-2 md:gap-x-16">
+                {/* node dot on the line */}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-[19px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-[var(--accent)] bg-[#050505] md:left-1/2"
+                />
                 <motion.div
-                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  initial={reduce ? false : { opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.55, ease: EASE, delay: i * 0.06 }}
+                  transition={{ duration: 0.6, ease: EASE }}
+                  className={
+                    left
+                      ? 'pl-12 md:col-start-1 md:pl-0 md:pr-16 md:text-right'
+                      : 'pl-12 md:col-start-2 md:pl-16'
+                  }
                 >
-                  <button
-                    type="button"
-                    onMouseEnter={() => openRow(i)}
-                    onFocus={() => openRow(i)}
-                    onClick={() => {
-                      setOpen(isOpen ? -1 : i);
-                      markExplored(i);
-                    }}
-                    aria-expanded={isOpen}
-                    className="group flex w-full items-center gap-5 py-6 text-left"
-                  >
-                    <span
-                      className={`mono-accent shrink-0 tabular-nums transition-colors ${
-                        isOpen ? 'text-[var(--accent)]' : 'text-[var(--text-dim)]'
-                      }`}
-                    >
-                      0{i + 1}
-                    </span>
-                    <span
-                      className={`flex-1 font-display text-[clamp(1.4rem,3.2vw,2.4rem)] font-bold leading-tight tracking-[-0.02em] transition-colors ${
-                        isOpen ? 'text-[var(--text-primary)]' : 'text-[var(--text-muted)] group-hover:text-[var(--text-primary)]'
-                      }`}
-                    >
-                      {item.title}
-                    </span>
-                    <span className="mono-accent hidden shrink-0 text-[var(--text-dim)] sm:block">
-                      {item.tag}
-                    </span>
-                    <span
-                      className={`shrink-0 text-2xl leading-none text-[var(--accent)] transition-transform duration-300 ${
-                        isOpen ? 'rotate-45' : 'rotate-0'
-                      }`}
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.45, ease: EASE }}
-                        className="overflow-hidden"
+                  <span className="mono-accent text-[var(--accent)]">
+                    {String(i + 1).padStart(2, '0')} · {item.tag}
+                  </span>
+                  <h3 className="mt-2 font-display text-[clamp(1.4rem,2.4vw,2.1rem)] font-bold leading-tight tracking-[-0.02em] text-[var(--text-primary)]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-[var(--text-muted)]">{item.body}</p>
+                  {growth && <GrowthRows growth={growth} reduce={reduce} />}
+                  <ul className={`mt-4 flex flex-col gap-2 ${left ? 'md:items-end' : ''}`}>
+                    {item.points.map((p) => (
+                      <li
+                        key={p}
+                        className={`flex items-start gap-3 text-sm text-[var(--text-muted)] ${
+                          left ? 'md:flex-row-reverse md:text-right' : ''
+                        }`}
                       >
-                        <div className="pb-7 pl-[2.6rem] pr-2">
-                          <p className="body-lg max-w-[60ch] text-[var(--text-primary)]/85">
-                            {item.body}
-                          </p>
-                          {growth && (
-                            <div className="mt-6 flex max-w-[480px] flex-col gap-3.5">
-                              {growth.map((g) => (
-                                <div key={g.name} className="flex items-center gap-3">
-                                  <PlatformIcon name={g.name} className="h-4 w-4 shrink-0 text-[var(--accent)]" />
-                                  <span className="w-28 shrink-0 text-sm text-[var(--text-muted)]">{g.name}</span>
-                                  <span className="font-display text-sm text-[var(--text-dim)]">{g.from}K</span>
-                                  <div className="relative h-px flex-1 bg-[var(--border)]">
-                                    <motion.span
-                                      className="absolute inset-y-0 left-0 block bg-[var(--accent)]"
-                                      initial={reduce ? false : { width: 0 }}
-                                      whileInView={{ width: '100%' }}
-                                      viewport={{ once: true }}
-                                      transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-                                    />
-                                  </div>
-                                  <span className="w-14 shrink-0 text-right font-display text-base font-bold text-[var(--accent)]">
-                                    <AnimatedCounter value={g.to} suffix="K" />
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          <ul className="mt-4 flex flex-col gap-2">
-                            {item.points.map((p) => (
-                              <li
-                                key={p}
-                                className="flex items-start gap-3 text-[var(--text-muted)]"
-                              >
-                                <span className="mt-[0.55em] h-1 w-4 shrink-0 bg-[var(--accent)]" />
-                                <span>{p}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        <span className="mt-[0.5em] h-px w-4 shrink-0 bg-[var(--accent)]" />
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );
