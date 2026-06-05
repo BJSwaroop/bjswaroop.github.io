@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import SectionReveal from './SectionReveal';
 import ProjectRows from './ProjectRows';
@@ -10,7 +10,15 @@ import PlatformIcon from './PlatformIcon';
 
 type Video = (typeof work.flagship.videos)[number];
 
+function youtubeId(href?: string | null): string | null {
+  if (!href) return null;
+  const m = href.match(/[?&]v=([\w-]{11})/) || href.match(/youtu\.be\/([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
 function VideoCard({ v }: { v: Video }) {
+  const id = youtubeId(v.url);
+  const [src, setSrc] = useState(id ? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg` : '');
   return (
     <a
       href={v.url}
@@ -18,33 +26,16 @@ function VideoCard({ v }: { v: Video }) {
       rel="noopener noreferrer"
       className="glow-card group block w-[280px] shrink-0 overflow-hidden transition-transform duration-300 hover:-translate-y-1 sm:w-[340px]"
     >
-      <div
-        className="relative aspect-video overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #181818, #0a0a0a)' }}
-      >
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
-            backgroundSize: '26px 26px',
-          }}
+      <div className="relative aspect-video overflow-hidden bg-[var(--bg-subtle)]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={v.title}
+          loading="lazy"
+          onError={() => id && setSrc(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`)}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
         />
-        <span
-          aria-hidden="true"
-          className="absolute -right-6 -top-6 h-28 w-28 rounded-full blur-2xl"
-          style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.28), transparent 70%)' }}
-        />
-        <span className="absolute left-4 top-4 font-display text-2xl font-black text-[var(--text-primary)]">
-          {v.views}
-          <span className="ml-1 align-middle font-mono text-[0.6rem] font-normal uppercase tracking-wider text-[var(--text-dim)]">
-            views
-          </span>
-        </span>
-        <span className="absolute bottom-4 right-4 rounded-[4px] bg-black/40 px-2 py-1 font-mono text-[0.65rem] text-[var(--text-muted)]">
-          {v.duration}
-        </span>
+        <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--accent)]/50 bg-black/30 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
           <svg width="15" height="17" viewBox="0 0 14 16" fill="var(--accent)" aria-hidden="true">
             <path d="M0 0l14 8-14 8z" />
@@ -113,7 +104,7 @@ export default function Work() {
       {/* Flagship strip (personal channel) */}
       <div ref={stripRef} className="relative mt-[clamp(64px,9vh,110px)]">
         <div className="section-shell mb-8">
-          <p className="section-label mb-2">// MY CHANNEL · MOST WATCHED</p>
+          <p className="section-label mb-2">// FROM MY CHANNEL</p>
           <h3 className="heading-sub text-[var(--text-primary)]">{work.flagship.heading}</h3>
         </div>
 

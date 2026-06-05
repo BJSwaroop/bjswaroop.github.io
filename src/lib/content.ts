@@ -373,34 +373,10 @@ export const work = {
   flagship: {
     heading: 'On my own channel',
     videos: [
-      {
-        title: 'Python Full Course Telugu',
-        duration: '9 hours',
-        views: '2M+',
-        image: '[IMAGE: Python course YouTube thumbnail]',
-        url: 'https://www.youtube.com/@SwaroopVITB',
-      },
-      {
-        title: 'C Language Full Course',
-        duration: 'Full length',
-        views: '1.17M',
-        image: '[IMAGE: C Language course thumbnail]',
-        url: 'https://www.youtube.com/@SwaroopVITB',
-      },
-      {
-        title: 'HTML Full Course',
-        duration: 'Full length',
-        views: '985K',
-        image: '[IMAGE: HTML course thumbnail]',
-        url: 'https://www.youtube.com/@SwaroopVITB',
-      },
-      {
-        title: '24 Lakhs CTC in Tier-3',
-        duration: 'Short',
-        views: '548K',
-        image: '[IMAGE: 24 Lakhs CTC thumbnail]',
-        url: 'https://www.youtube.com/@SwaroopVITB',
-      },
+      { title: 'Python Full Course · Telugu', url: 'https://www.youtube.com/watch?v=GmdGv5ndX54' },
+      { title: 'Java Full Course · Telugu', url: 'https://www.youtube.com/watch?v=d530rd7m_1E' },
+      { title: 'AI Career Roadmap 2026', url: 'https://www.youtube.com/watch?v=SvLfQR3hz3M' },
+      { title: '6-Month DSA Roadmap', url: 'https://www.youtube.com/watch?v=4Kwd78XCmQU' },
     ],
   },
 };
