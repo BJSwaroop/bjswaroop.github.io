@@ -33,9 +33,20 @@ export default function Speaking() {
               variants={reduce ? undefined : fadeUpVariant}
               className="group -mx-4 grid grid-cols-1 gap-1 border-b border-[var(--border)] px-4 py-6 transition-colors hover:bg-white/[0.02] md:grid-cols-[1fr_auto_auto] md:items-baseline md:gap-10"
             >
-              <span className="font-display text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent)]">
-                {ev.name}
-              </span>
+              {(ev as { link?: string }).link ? (
+                <a
+                  href={(ev as { link?: string }).link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-display text-xl font-bold text-[var(--text-primary)] transition-colors hover:text-[var(--accent)]"
+                >
+                  {ev.name} <span className="text-[var(--accent)]">↗</span>
+                </a>
+              ) : (
+                <span className="font-display text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent)]">
+                  {ev.name}
+                </span>
+              )}
               <span className="mono-accent text-[var(--text-muted)]">{ev.type}</span>
               <span className="text-sm text-[var(--text-dim)] md:text-right">{ev.location}</span>
             </motion.li>

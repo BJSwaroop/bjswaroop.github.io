@@ -29,42 +29,12 @@ export default function About() {
           <div className="relative h-full">
             <div className="overflow-hidden">
               <motion.div style={reduce ? undefined : { y: imageY }} className="will-change-transform">
-                <div className="relative flex aspect-[3/4] w-full flex-col justify-between overflow-hidden border border-[var(--border)] bg-[var(--bg-card)] p-8">
-                  <span
-                    aria-hidden="true"
-                    className="absolute -left-10 -top-10 h-44 w-44 rounded-full blur-3xl"
-                    style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.16), transparent 70%)' }}
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-[0.05]"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
-                      backgroundSize: '34px 34px',
-                    }}
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="relative font-display font-black leading-none text-[var(--text-primary)]"
-                    style={{ fontSize: 'clamp(5rem, 11vw, 10rem)' }}
-                  >
-                    S<span className="text-[var(--accent)]">.</span>
-                  </span>
-                  <ul className="relative flex flex-col gap-2.5">
-                    {['24 · Bhimavaram, AP', 'ECE branch, not CS', 'EAMCET rank 6,464', '1M+ organic audience'].map(
-                      (f) => (
-                        <li
-                          key={f}
-                          className="mono-accent flex items-center gap-3 text-[var(--text-muted)]"
-                        >
-                          <span aria-hidden="true" className="h-px w-5 shrink-0 bg-[var(--accent)]" />
-                          {f}
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/swaroop.jpg"
+                  alt="Swaroop filming on location"
+                  className="aspect-[3/4] w-full object-cover object-center"
+                />
               </motion.div>
             </div>
           </div>

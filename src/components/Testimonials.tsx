@@ -25,35 +25,38 @@ export default function Testimonials() {
           viewport={{ once: true, amount: 0.15 }}
           className="mt-12 grid gap-6 md:grid-cols-3"
         >
-          {testimonials.items.map((t, i) => (
-            <motion.figure
-              key={i}
-              variants={reduce ? undefined : fadeUpVariant}
-              className="glow-card flex flex-col p-7"
-            >
-              <span
-                aria-hidden="true"
-                className="font-display text-6xl leading-[0.7] text-[var(--accent)]"
+          {testimonials.items.map((t, i) => {
+            const linkedin = (t as { linkedin?: string }).linkedin;
+            return (
+              <motion.figure
+                key={i}
+                variants={reduce ? undefined : fadeUpVariant}
+                className="glow-card flex flex-col p-7"
               >
-                “
-              </span>
-              <blockquote className="mt-3 flex-1 italic leading-relaxed text-[var(--text-muted)]">
-                {t.quote}
-              </blockquote>
-              <figcaption className="mt-7 flex items-center gap-3">
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--accent)]/40 bg-[var(--accent-glow)] font-display font-bold text-[var(--accent)]"
-                >
-                  {t.name.charAt(0)}
+                <span aria-hidden="true" className="font-display text-5xl leading-[0.6] text-[var(--accent)]">
+                  “
                 </span>
-                <div>
-                  <p className="font-display font-bold text-[var(--text-primary)]">{t.name}</p>
-                  <p className="mono-accent text-[var(--text-dim)]">{t.title}</p>
-                </div>
-              </figcaption>
-            </motion.figure>
-          ))}
+                <blockquote className="mt-4 flex-1 text-[0.95rem] italic leading-relaxed text-[var(--text-muted)]">
+                  {t.quote}
+                </blockquote>
+                <figcaption className="mt-6 border-t border-[var(--border)] pt-5">
+                  {linkedin ? (
+                    <a
+                      href={linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-display font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                    >
+                      {t.name} ↗
+                    </a>
+                  ) : (
+                    <p className="font-display font-semibold text-[var(--accent)]">{t.name}</p>
+                  )}
+                  <p className="mt-1 text-sm text-[var(--text-muted)]">{t.title}</p>
+                </figcaption>
+              </motion.figure>
+            );
+          })}
         </motion.div>
       </div>
     </section>
