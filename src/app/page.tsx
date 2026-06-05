@@ -11,7 +11,6 @@ import Qualities from '@/components/Qualities';
 import Work from '@/components/Work';
 import Testimonials from '@/components/Testimonials';
 import Empire from '@/components/Empire';
-import Systems from '@/components/Systems';
 import About from '@/components/About';
 import Timeline from '@/components/Timeline';
 import Brands from '@/components/Brands';
@@ -46,8 +45,6 @@ export default function Home() {
           <Testimonials />
           <SectionDivider />
           <Empire />
-          <SectionDivider />
-          <Systems />
           <SectionDivider />
           <About />
           <SectionDivider />
