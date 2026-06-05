@@ -401,11 +401,13 @@ export const testimonials = {
       quote: `We have an entire organization with Scaler Academy, SST, dozens of teams, and somehow, when anyone needs something done with content, video, or brand, the name that comes up is Swaroop. It's not his title. It's his speed. You give him something on Monday, it's done by Tuesday, and it's better than what you asked for. We asked for 100%, he delivered 200%. I took him to San Francisco for a critical project because I knew he'd execute. Because he's a creator himself, he understands audience, distribution, and storytelling at a level most brand hires simply don't. Not everyone can do what he does.`,
       name: 'Anshuman Singh',
       title: 'Co-founder, Scaler / InterviewBit',
+      linkedin: 'https://www.linkedin.com/in/anshumansingh26/',
     },
     {
       quote: `I don't review Swaroop's work anymore. Not because I don't care, because I don't need to. I hand him a problem, and he owns it end to end. The brief, the team, the output, the iteration, all of it. He's built and run his own creator business, so he thinks like an operator, not an employee. There are very few people you can trust with that level of autonomy. When I say I leave things on him with 100% trust, I mean it literally.`,
       name: 'Manmeet Singh Akali',
       title: 'VP, Scaler School of Technology',
+      linkedin: 'https://www.linkedin.com/in/manmeetakali/',
     },
     {
       quote: `What struck me about Swaroop was that he never operated like an intern. We'd give him a task expecting deliverables, and he'd come back thinking about the business, how it scales, how it impacts revenue, what the second-order effects are. He has the instinct of someone who's built their own thing, because he has. More practical understanding of growth, audience, and distribution than most MBA grads I've worked with. We hadn't found anyone like him. That's why we didn't let him leave. We made him our first full-time hire.`,
