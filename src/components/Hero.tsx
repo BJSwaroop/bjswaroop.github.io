@@ -1,7 +1,6 @@
 'use client';
 
-import { MouseEvent, useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { MouseEvent } from 'react';
 import {
   motion,
   useMotionTemplate,
@@ -16,8 +15,6 @@ import GridBackground from './GridBackground';
 import Magnetic from './Magnetic';
 import { scrollToId } from './SmoothScroll';
 import { hero } from '@/lib/content';
-
-const Avatar3D = dynamic(() => import('./Avatar3D'), { ssr: false });
 
 function Ctas() {
   return (
@@ -57,28 +54,6 @@ function Wordmark({ className }: { className: string }) {
 export default function Hero() {
   const reduce = useReducedMotion();
 
-  const [desktop3D, setDesktop3D] = useState(false);
-  const [ready3D, setReady3D] = useState(false);
-  const [active, setActive] = useState(true);
-
-  useEffect(() => {
-    const ok =
-      window.matchMedia('(pointer: fine)').matches &&
-      window.innerWidth >= 1024 &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setDesktop3D(ok);
-    if (!ok) return;
-    const t = window.setTimeout(() => setReady3D(true), 600);
-    return () => window.clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setActive(window.scrollY < window.innerHeight * 1.1);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
   const scale = useTransform(scrollY, [0, 500], [1, 0.95]);
@@ -102,7 +77,7 @@ export default function Hero() {
       className="sticky top-0 z-10 flex h-screen w-full items-center justify-center overflow-hidden bg-[#050505]"
       aria-label="Introduction"
     >
-      {!desktop3D && <ParticleCanvas />}
+      <ParticleCanvas />
       <GridBackground opacity={0.08} size={72} />
 
       {!reduce && (
@@ -120,58 +95,25 @@ export default function Hero() {
         }}
       />
 
-      {desktop3D ? (
-        <div className="section-shell relative z-10 grid w-full grid-cols-[1.05fr_0.95fr] items-center gap-6">
-          <div className="text-left">
-            <p className="hero-fade section-label mb-6" style={{ animationDelay: '0.05s' }}>
-              // Brand &amp; Content Leader
-            </p>
-            <Wordmark className="font-display text-[clamp(3rem,7vw,6.5rem)] font-black leading-[0.95] tracking-[-0.03em] text-[var(--text-primary)]" />
-            <p
-              className="hero-fade mt-6 max-w-[34ch] font-display text-[clamp(1.2rem,1.7vw,1.7rem)] font-bold leading-[1.2] tracking-[-0.02em] text-[var(--text-primary)]"
-              style={{ animationDelay: '0.5s' }}
-            >
-              {hero.headline}
-            </p>
-            <p
-              className="hero-fade mono-accent mt-5 max-w-[46ch] text-[var(--text-muted)]"
-              style={{ animationDelay: '0.65s' }}
-            >
-              {hero.subtitle}
-            </p>
-            <Ctas />
-          </div>
-
-          <div className="relative h-full max-h-[82vh]">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-              style={{ background: 'radial-gradient(circle, rgba(232,168,56,0.22), transparent 70%)' }}
-            />
-            {ready3D && active && <Avatar3D />}
-          </div>
-        </div>
-      ) : (
-        <div className="section-shell relative z-10 flex flex-col items-center text-center">
-          <p className="hero-fade section-label mb-7" style={{ animationDelay: '0.05s' }}>
-            // Brand &amp; Content Leader
-          </p>
-          <Wordmark className="heading-display" />
-          <p
-            className="hero-fade mt-8 max-w-[780px] text-balance font-display text-[clamp(1.4rem,3vw,2.4rem)] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--text-primary)]"
-            style={{ animationDelay: '0.55s' }}
-          >
-            {hero.headline}
-          </p>
-          <p
-            className="hero-fade mono-accent mt-7 max-w-[700px] text-[var(--text-muted)]"
-            style={{ animationDelay: '0.7s' }}
-          >
-            {hero.subtitle}
-          </p>
-          <Ctas />
-        </div>
-      )}
+      <div className="section-shell relative z-10 flex flex-col items-center text-center">
+        <p className="hero-fade section-label mb-7" style={{ animationDelay: '0.05s' }}>
+          // Brand &amp; Content Leader
+        </p>
+        <Wordmark className="heading-display" />
+        <p
+          className="hero-fade mt-8 max-w-[780px] text-balance font-display text-[clamp(1.4rem,3vw,2.4rem)] font-bold leading-[1.15] tracking-[-0.02em] text-[var(--text-primary)]"
+          style={{ animationDelay: '0.55s' }}
+        >
+          {hero.headline}
+        </p>
+        <p
+          className="hero-fade mono-accent mt-7 max-w-[700px] text-[var(--text-muted)]"
+          style={{ animationDelay: '0.7s' }}
+        >
+          {hero.subtitle}
+        </p>
+        <Ctas />
+      </div>
 
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <div className="animate-float flex flex-col items-center gap-2 text-[var(--text-dim)]">
